@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('login', function(){
-//     return view('/login');
-// });
+Route::get('addUser','\App\Http\Controllers\UserController@getInfo');
+Route::get('profile','\App\Http\Controllers\UserController@getProfile');
+Route::get('deactivate','\App\Http\Controllers\UserController@deactivate');
 
 Auth::routes();
 

@@ -68,6 +68,42 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="divisionId" class="col-md-4 col-form-label text-md-right">{{ __('Division') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="divisionId"  class="form-select"> Select Division
+                                   
+                                    @foreach($divisions as $division)
+                                        <option value = "{{$division -> divisionId}}"> {{$division -> divisionTitle}}</option>
+                                    @endforeach
+                                </select>
+                                @error('divisionId')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="divisionId" class="col-md-4 col-form-label text-md-right">{{ __('District Council') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="district_councilId"  class="form-select"> Select Division
+                                    
+                                    @foreach($districts as $district)
+                                        <option value = "{{$district -> district_councilId}}"> {{$district -> districtName}}</option>
+                                    @endforeach
+                                </select>
+                                @error('divisionId')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
