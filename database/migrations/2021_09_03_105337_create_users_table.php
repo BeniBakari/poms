@@ -14,17 +14,20 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigInteger('userId')->primary();
+            $table->id();
             $table->string('firstName',60);
             $table->string('lastName',60);
             $table->string('email',60)->unique();
+            $table->string('gender',6);
+            $table->string('phone',10);
+            $table->string('status');
             $table->string('password',60);
-            $table->bigInteger('roleId');
-            $table->bigInteger('district_councilId');
-            $table->bigInteger('divisionId');
-             $table->foreign('divisionId')->references('divisionId')->on('divisions')->onUpdate('cascade')->onDelete('cascade');
-             $table->foreign('roleId')->references('roleId')->on('roles')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('district_councilId')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('roleId')->unsigned();
+            $table->integer('district_councilId')->unsigned();
+            $table->integer('divisionId')->unsigned();
+            $table->foreign('divisionId')->references('divisionId')->on('divisions')->onUpdate('cascade')->ondelete('null');
+            $table->foreign('roleId')->references('roleId')->on('roles')->onUpdate('cascade')->ondelete('null');
+            $table->foreign('district_councilId')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->ondelete('null');
             $table->timestamps();
         });
     }

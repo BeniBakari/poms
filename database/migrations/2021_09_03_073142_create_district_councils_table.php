@@ -14,10 +14,10 @@ class CreateDistrictCouncilsTable extends Migration
     public function up()
     {
         Schema::create('district_councils', function (Blueprint $table) {
-            $table->bigInteger('district_councilId')->primary();
-            $table->string('name',60);
-            $table->bigInteger('regionId');
-            $table->foreign('regionId')->references('regionId')->on('regions')->onUpdate('cascade')->onDelete('cascade');
+            $table->increments('district_councilId');
+            $table->string('districtName',60);
+            $table->integer('regionId')->unsigned();
+            $table->foreign('regionId')->references('regionId')->on('regions')->onUpdate('cascade')->ondelete('null');
             $table->timestamps();
         });
     }
