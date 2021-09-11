@@ -56,7 +56,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 /* .nav::-webkit-scrollbar{
   display: none;
@@ -139,8 +139,8 @@ a{
     
     <div class="s-nav">
     <nav class="nav">
-        {{-- <div nav-list style="color: red;">
-            <div class="nav-items" style="color: green;">
+        <div nav-list>
+            <div class="nav-items">
 
                 <a href="#" class="nav-link p-link">
                     <i class="fas fa-user-tie nav-icon"></i>
@@ -171,7 +171,7 @@ a{
 
 
             </div>
-        </div> --}}
+        </div>
     </nav>
 
     </div>
