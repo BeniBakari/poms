@@ -14,19 +14,19 @@ class CreateRequestsTable extends Migration
     public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
-            $table->bigInteger('requestId')->primary();
-            $table->bigInteger('userId');
-            $table->timestamp('startDate');
-            // $table->timestamp('endDate');
-            $table->bigInteger('source');
-            $table->bigInteger('destination');
+            $table->increments('requestId');
+            $table->bigInteger('userId')->unsigned();
+            $table->string('startDate');
+            $table->string('endDate');
+            $table->integer('source')->unsigned();
+            $table->integer('destination')->unsigned();
             $table->string('requestType',60);
             $table->string('requestDesc',200);
             $table->string('requestStatus',20);
             $table->string('approveStatus',20);
-            $table->foreign('userId')->references('userId')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('source')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('destination')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('userId')->references('id')->on('users')->onUpdate('cascade')->ondelete('null');
+            $table->foreign('source')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->ondelete('null');
+            $table->foreign('destination')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->ondelete('null');
             $table->timestamps();
         });
     }

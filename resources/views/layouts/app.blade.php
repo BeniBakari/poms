@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    @include('layouts.web_header')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -78,6 +79,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @include('layouts.footer')
     </div>
 </body>
 </html>
