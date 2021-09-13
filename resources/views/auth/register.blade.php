@@ -1,6 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    	body{
+		font-family: raleway;
+	}
+	#myForm{
+		border: 1px solid grey;
+		border-bottom-left-radius: 5%;
+		border-bottom-right-radius: 5%;
+		padding: 0;
+		background-color: #013C5C;
+		box-shadow: 2px   solid black;
+	}
+
+	.form-inputs{
+		background-color: white;
+		display: block;
+		padding: 1%;
+		border-bottom-left-radius: 35px;
+		border-bottom-right-radius: 35px;
+		/*margin-bottom: 30px;*/
+	}	
+	.form-button{
+		height: 100px;
+		
+	}
+	.btn{
+		margin-top: 8%;
+		background-color: white;
+		color: black;
+		width: 50%;
+	}
+	
+	.form-inputs{
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	.form-inputs>h3{
+		margin-bottom: 40px;
+
+	}
+	.form-inputs input{
+		color: #3D3A3A;
+		border: none;
+		border-bottom: 2px solid #013C5C;	
+	}
+	 .form-control:focus {
+  					box-shadow: none;
+				}
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,7 +57,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="form-inputs">
                         @csrf
 
                         <div class="form-group row">
@@ -72,7 +121,7 @@
 
                             <div class="col-md-6">
                                 <select name="divisionId"  class="form-select"> Select Division
-                                   
+                                   <option >Select Division</option>
                                     @foreach($divisions as $division)
                                         <option value = "{{$division -> divisionId}}"> {{$division -> divisionTitle}}</option>
                                     @endforeach
@@ -90,7 +139,7 @@
 
                             <div class="col-md-6">
                                 <select name="district_councilId"  class="form-select"> Select Division
-                                    
+                                    <option >Select ditrict</option>
                                     @foreach($districts as $district)
                                         <option value = "{{$district -> district_councilId}}"> {{$district -> districtName}}</option>
                                     @endforeach

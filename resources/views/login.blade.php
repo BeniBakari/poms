@@ -11,11 +11,7 @@
 		background-color: #013C5C;
 		box-shadow: 2px   solid black;
 	}
-	.header{
-		background-color: #013C5C;
-		color: white;
-		margin-bottom: 10%;
-	}
+
 	.form-inputs{
 		background-color: white;
 		display: block;
@@ -52,9 +48,7 @@
   					box-shadow: none;
 				}
 </style>
-<div class="card-header header">
-	<h2>POM-PORALG</h2>
-</div>
+				@include('layouts.header')
 <div id="myForm" class="col-md-3 text-center">
 	<form>
 		@csrf

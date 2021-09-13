@@ -33,4 +33,10 @@ class UserController extends Controller
         else
             return "requested user not available";
     }
+
+    public function getUsers()
+    {
+        $users = DB::select('select *from users');
+            return view('Admin.users', ['users' => $users]);
+    }
 }

@@ -14,16 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts/navibar');
+    return view('welcome');
 });
 
 Route::get('addUser','\App\Http\Controllers\UserController@getInfo');
 Route::get('profile','\App\Http\Controllers\UserController@getProfile');
 Route::get('deactivate','\App\Http\Controllers\UserController@deactivate');
+Route::get('users','\App\Http\Controllers\UserController@getUsers');
 
 Route::get('request', function(){
     return view('User.request');
 });
+
 
 Auth::routes();
 
