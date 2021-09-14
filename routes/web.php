@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('Myprofile', function () {
+    return view('user.profile');
+});
 Route::get('addUser','\App\Http\Controllers\UserController@getInfo');
 Route::get('profile','\App\Http\Controllers\UserController@getProfile');
 Route::get('deactivate','\App\Http\Controllers\UserController@deactivate');
