@@ -21,13 +21,13 @@ body {
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     /* transition: .5s */
-    background-color: red;
+    /* background-color: red; */
 }
 
 
 .nav-container{
     position: fixed;
-    top: 0;
+    top: 100px;
     left: 0%; 
     width: 224px;
     height: 100%;

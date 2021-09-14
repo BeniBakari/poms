@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('User.editUser');
 });
 
 Route::get('addUser','\App\Http\Controllers\UserController@getInfo');

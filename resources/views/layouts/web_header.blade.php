@@ -13,3 +13,4 @@
  <!--  styling -->
  <link rel="stylesheet" type="text/css" href="{{ asset('css/general.css') }}">
 <!--  end of styling -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
