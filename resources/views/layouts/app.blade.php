@@ -24,7 +24,9 @@
     <div id="app">
         @include('layouts.header')
             <div style=" float: left; width: 300px; background-color: magenta;">    
-            
+
+                @include('layouts.navibar')
+
             </div>
         <main class="py-4" >
             @yield('content')
