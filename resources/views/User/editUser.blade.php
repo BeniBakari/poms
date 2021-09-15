@@ -92,7 +92,7 @@
                 </div>
               </div>
               
-              <button type="submit" class="btn btn-primary col-md-2 offset-4" style="margin-top: 30px; background-color:#013c5c; border-radius:20px;" >Save</button>       
+              <button type="submit" class="btn btn-primary   offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>       
         </form>
     </div>
    
