@@ -34,25 +34,25 @@
             <div class="form-group row">
               <label for="inputFirstName" class="col-sm-auto col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                <input name="firstName" type="text" class="form-control" id="inputFirstName" placeholder="First Name">
               </div>
             </div>
             <div class="form-group row">
               <label for="inputLastName" class="col-sm-auto col-form-label mx-3">Last Name</label>
               <div class="col-sm-8 form-inputs">
-                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                <input name="lastName" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
               </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-auto col-form-label mx-3">Email</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="email" class="form-control offset-1" id="inputEmail3" placeholder="Email">
+                  <input name="email" type="email" class="form-control offset-1" id="inputEmail3" placeholder="Email">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputRank" class="col-sm-auto col-form-label mx-3">Rank</label>
                 <div class="col-sm-8 form-inputs">              
-                    <select class="form-control offset-1" id="inputRank">
+                    <select name="rank" class="form-control offset-1" id="inputRank">
                         <option selected>Choose</option>
                         <option value="1">DICT</option>
                         <option value="2">PMU</option>
@@ -64,25 +64,25 @@
               <div class="form-group row">
                 <label for="inputDivision" class="col-sm-auto col-form-label mx-3">Division</label>
                 <div class="col-sm-8 form-inputs ">
-                  <input type="text" class="form-control mx-3" id="inputDivision" placeholder="Division">
+                  <input name="divisionId" type="text" class="form-control mx-3" id="inputDivision" placeholder="Division">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPhoneNo" class="col-sm-auto col-form-label mx-3">Phone No</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="text" class="form-control" id="inputPhoneNo" placeholder="Phone Number">
+                  <input name="phone" type="text" class="form-control" id="inputPhoneNo" placeholder="Phone Number">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-auto col-form-label mx-3">Password</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputRole" class="col-sm-auto col-form-label mx-3 ">Role</label>
                 <div class="col-sm-8 form-inputs">              
-                    <select class="form-control offset-1" id="inputRole">
+                    <select name="roleId" class="form-control offset-1" id="inputRole">
                         <option selected>Choose</option>
                         <option value="1">DICT</option>
                         <option value="2">PMU</option>
@@ -92,9 +92,7 @@
                 </div>
               </div>
               
-                <button type="button" class="btn btn-primary col-2 offset-4" style="margin-top: 30px; background-color:#013c5c; border-radius:20px;" >Save</button>
-             
-             
+              <button type="submit" class="btn btn-primary col-md-2 offset-4" style="margin-top: 30px; background-color:#013c5c; border-radius:20px;" >Save</button>       
         </form>
     </div>
    
