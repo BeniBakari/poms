@@ -29,7 +29,7 @@
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
-                        
+
                     @endauth
                 </div>
             @endif

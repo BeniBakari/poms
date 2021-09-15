@@ -4,14 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MakeRequests extends Controller
-{
-    public function validate(array $data)
-    {
-        return Validator::make($data[
+use Illuminate\Support\Facades\Validator;
 
-        ]);
-    }
+use DB;
+
+class RequestController extends Controller
+{
+    // public function validate(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'requestDesc' => ['required', 'string', 'min:100','max:500'],
+    //         'source' => ['required'],
+    //         'destination' => ['required'],
+    //         'startDate' => ['required'],
+    //         'endDate' => ['required'],
+    //         'requestType' => ['required']
+    //     ]);
+    // }
 
     /**
      * Create a new user instance after a valid registration.
@@ -22,7 +31,7 @@ class MakeRequests extends Controller
 
     public function makeRequest(array $data)
     {
-        return MakeRequests::create([
+        return Request::create([
             'userId' => $data['userId'],
             'startDate' => $data['startDate'],
             'endDate' => $data['endDate'],
@@ -31,8 +40,8 @@ class MakeRequests extends Controller
             'destination' =>$data['destination'],
             'requestType' => $data['requestType'],
             'requestDesc' => $data['requestDesc'],
-            'requestStatus' => $data['requestStatus'],
-            'approveStatus' => $data['approveStatus']
+            'requestStatus' => 1,
+            'approveStatus' => "pending"
         ]);
     }
     public function getReqInfo()

@@ -25,9 +25,9 @@ class UserController extends Controller
         return DB::update('update users set status= ? where id=?',['Active',$request->id]);
     }
 
-    public function getProfile()
+    public function getProfile(Request $request)
     {
-        $userProfile = DB::select('select * from users where id=?', [4]);
+        $userProfile = DB::select('select * from users where id=?', [$request->id]);
         if($userProfile != null)
         return $userProfile;
         else
@@ -37,6 +37,8 @@ class UserController extends Controller
     public function getUsers()
     {
         $users = DB::select('select *from users');
-            return view('Admin.users', ['users' => $users]);
+        $divisions = DB::select('select *from divisions');
+        
+            return view('Admin.users', ['users' => $users, 'divisions'=> $divisions]);
     }
 }

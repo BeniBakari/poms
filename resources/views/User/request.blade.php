@@ -6,32 +6,34 @@
 @include('layouts.web_header')
 @include('layouts.header')
 
-<div style="float:left; width:300px;">
+<!-- <div style="float:left; width:300px;">
     @include('layouts.navbar')
-</div>
+</div> -->
 
 <div class="card col-md-9 offset-3">
     <div class="card-header">
         <h3 class="text-center">Make Request</h3>
     </div>
+    <form method="POST" action="" >
+        @csrf
     <div class="card-body ">
         <div class="row">
             <div class="col">
                 <label for="" class="float-left"  style="margin-right:10%">Where From</label>
-                <select name="" id="" class="form-control col-md-6">
+                <select name="" id="" class="form-control form-control-sm form-select col-md-6">
                     <option>Select</option>
-                    <option value="1">Type 1</option>
-                    <option value="2">Type 2</option>
-                    <option value="3">Type 3</option>
+                    @foreach($reqInfos as $reqInfo)
+                    <option value="{{$reqInfo -> district_councilId}}">{{$reqInfo -> districtName}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col">
-                <label for="" class="float-left" style="margin-right:10%">WhereTo</label>
-                <select name="" id="" class="form-control col-md-6 ">
+                <label for="" class="float-left" style="margin-right:10%">Where To</label>
+                <select name="" id="" class="form-control form-control-sm form-select col-md-6 ">
                     <option>Select </option>
-                    <option value="1">Type 1</option>
-                    <option value="2">Type 2</option>
-                    <option value="3">Type 3</option>
+                    @foreach($reqInfos as $reqInfo)
+                    <option value="{{$reqInfo -> district_councilId}}">{{$reqInfo -> districtName}}</option>
+                    @endforeach
                 </select>
             </div>
         </div><br>
@@ -39,11 +41,10 @@
             <div class="row  set-top">
                <div class="col offset-3  ">
                     <label for="" class="float-left"  style="margin-right:10%">Permission Type</label>
-                    <select name="" id="" class="form-control col-md-4">
+                    <select name="" id="" class="form-control form-control-sm form-select col-md-4">
                         <option>Select</option>
-                        <option value="1">Type 1</option>
-                        <option value="2">Type 2</option>
-                        <option value="3">Type 3</option>
+                        <option value="personal">Personal</option>
+                        <option value="official">Official</option>
                     </select>
                  </div>
             </div><br>
@@ -71,7 +72,6 @@
 		  </div>
         
     </div>
+    </form>
     
 </div>
-
-@include('layouts.footer')

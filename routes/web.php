@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('User.editUser');
 });
 Route::get('Myprofile', function () {
     return view('user.profile');
@@ -23,11 +23,19 @@ Route::get('addUser','\App\Http\Controllers\UserController@getInfo');
 Route::get('profile','\App\Http\Controllers\UserController@getProfile');
 Route::get('deactivate','\App\Http\Controllers\UserController@deactivate');
 Route::get('users','\App\Http\Controllers\UserController@getUsers');
+Route::get('request','\App\Http\Controllers\RequestController@getReqInfo');
+Route::get('districts','\App\Http\Controllers\RegionsController@show');
 
-Route::get('request', function(){
-    return view('User.request');
-});
 
+Route::post('addRegion','\App\Http\Controllers\RegionsController@store');
+Route::post('addRole','\App\Http\Controllers\RolesController@store');
+Route::post('addDivision','\App\Http\Controllers\DivisionsController@store');
+Route::post('makeRequest','\App\Http\Controllers\RequestController@makeRequest');
+Route::post('addDistrict','\App\Http\Controllers\District_councilController@store');
+
+// Route::get('district', function(){
+//     return view('Admin.addDistrict');
+// });
 
 Auth::routes();
 
