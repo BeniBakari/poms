@@ -62,8 +62,8 @@
         <div class="form-inputs">
             <h3 style="color:#013C5C" class="offset-md-2">POM-PORALG</h3>
             <div class="mb-3">      
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="ex@tamisemi.tz" autofocus>
-          </div>
+                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="ex@tamisemi.tz" autofocus>
+            </div>
           @csrf
           <div class="mb-3">
             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="password">
