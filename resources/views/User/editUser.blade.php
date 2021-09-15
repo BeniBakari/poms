@@ -43,19 +43,19 @@
               </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-auto col-form-label mx-4">Email</label>
+                <label for="inputEmail3" class="col-sm-auto col-form-label mx-4">  &ensp; &ensp;Email</label>
                 <div class="col-sm-8 form-inputs">
                   <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputRank" class="col-sm-auto col-form-label mx-4">Rank</label>
+                <label for="inputRank" class="col-sm-auto col-form-label mx-4">  &ensp; &ensp;Rank</label>
                 <div class="col-sm-8 form-inputs">
                   <input type="text" class="form-control" id="inputRank" placeholder="Rank">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputDivision" class="col-sm-auto col-form-label mx-3">Division</label>
+                <label for="inputDivision" class="col-sm-auto col-form-label mx-3">  &ensp; &ensp;Division</label>
                 <div class="col-sm-8 form-inputs">
                   <input type="text" class="form-control" id="inputDivision" placeholder="Division">
                 </div>
