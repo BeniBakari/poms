@@ -9,7 +9,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  <!--  end of bootstrap link -->
-
+<!--profile icone -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+crossorigin="anonymous"/>
+<!--end of icone profile -->
  <!--  styling -->
  <link rel="stylesheet" type="text/css" href="{{ asset('css/general.css') }}">
 <!--  end of styling -->
