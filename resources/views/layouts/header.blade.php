@@ -1,9 +1,10 @@
 <header>
 
 	<div class=" container-fluid card-header" style="background-color: #013C5C;">
-		<nav class="navbar navbar-expand-lg navbar-light">
+		<h2 style="color: #ffffff; font-family: 'Raleway', sans-serif;" >POM-PORALG</h2>
+		{{-- <nav class="navbar navbar-expand-lg navbar-light">
 		  <a class="navbar-brand" style="color: #ffffff; font-family: 'Raleway', sans-serif;" href="#">POM-PORALG</a>
-		</nav>
+		</nav> --}}
 	  </div>
 </header>
 
