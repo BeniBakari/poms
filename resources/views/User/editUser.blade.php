@@ -78,11 +78,6 @@
              
         </form>
     </div>
-    {{-- <div style="background-color: yellow; width:600px; border: solid black; margin-left:500px; padding-left:50px;">
-        <h2>Mambo Juju</h2>
-       <p>Umependeza na shati lako la damu ya mzee</p>
-       <h2>Puttin yupo hapa anaangalia movie</h2>
-    </div> --}}
    
 </body>
 </html>
