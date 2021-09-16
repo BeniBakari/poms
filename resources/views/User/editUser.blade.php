@@ -24,11 +24,14 @@
 <body>
     @include('layouts.web_header')
     @include('layouts.header')
+    
+
     {{-- @include('layouts.navibar') --}}
+   
 
     <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
 
-    <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
+    <div class="card card-body mx-auto mb-2" style="width: 60%; border-radius:10px;">
         <form>
             @csrf
             <div class="form-group row">
@@ -95,7 +98,7 @@
               <button type="submit" class="btn btn-primary   offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>       
         </form>
     </div>
-   
+    @include('layouts.footer')
 </body>
 </html>
 
