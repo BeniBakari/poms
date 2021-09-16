@@ -8,12 +8,11 @@
 				<div class="mb-3 col  row"> 
 					<label for="" class="float-left col-md-3" style="margin-right:10%">Region Name</label>    
                 	 <input type="text" name="regionName" class="form-control col-md-6 text-center form-inputs"  placeholder="KILIMANJARO" autofocus required>
+					 @error('regionName')
+                         <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
+                        @enderror 
         		</div>
-				@error("regionName")
-					<div>
-						<span><strong>{{_errorRegionName}}</strong></span>
-					</div>
-				@enderror
+				
                 <div class="form-button text-center">
                     <button type="submit" class="btn btn-primary col-md-4" style="background-color:#013c5c; border-radius:20px;" >Add Region</button>
           		</div>

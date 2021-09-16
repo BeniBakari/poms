@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getInfo()
     {
         $districts = DB::select('select district_councilId,districtName from district_councils');
@@ -18,12 +24,14 @@ class UserController extends Controller
 
      public function deactivate(Request $request)
     {
-        return DB::update('update users set status= ? where id=?',['Inactive',4]);
+        if(DB::update('update users set status= ? where id=?',['Inactive',$request->id]))
+            return "boom";
     }
 
     public function activate(Request $request)
     {
-        return DB::update('update users set status= ? where id=?',['Active',$request->id]);
+         if(DB::update('update users set status= ? where id=?',['Active',$request->id]))
+           return "boom";
     }
 
     public function getProfile(Request $request)

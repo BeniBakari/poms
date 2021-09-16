@@ -17,7 +17,7 @@
         }  
     </style>
 
-
+        
     <div class="top-content row">
         <form class="d-flex col-md-4 offset-2">
                 <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="Search ser" aria-label="Search">
@@ -76,8 +76,17 @@
                         <td>
                             <a href="profile?id={{$user -> id}}">
                                 <button class="btn-sm rounded">edit</button>
-                            </a>
-                            
+                            </a>    
+                        </td>
+                        <td>
+                            <a href="<?php if($user->status == "Inactive") echo "activate"; else echo "deactivate" ?>?id={{$user -> id}}">
+                                <button class="btn-sm rounded">
+                                    <?php 
+                                        if($user->status == "Inactive") echo "Activate";
+                                        else echo "Deactivate";
+                                    ?>
+                                </button>
+                            </a> 
                         </td>
                     </tr>
                 @endforeach

@@ -28,8 +28,6 @@
     <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
 
     <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
-
-   
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
@@ -93,6 +91,7 @@
         </form>
         @endforeach
     </div>
+    
 
 </body>
 </html>
