@@ -29,10 +29,10 @@ class RegionsController extends Controller
      */
     protected function validator(array $data)
     {
-        // return Validator::make($data, [
-        //     'regionName' => ['required', 'string', 'max:30' ,'min:5','unique:regions'],      
-        // ]);
-        return $data;
+        return Validator::make($data, [
+            'regionName' => ['required', 'string', 'max:30' ,'min:5','unique:regions'],      
+        ]);
+        
     }
 
     /**
@@ -56,8 +56,6 @@ class RegionsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-       
-        $this->validator($data);
         if($this->create($data))
         return "Boom";
         else 

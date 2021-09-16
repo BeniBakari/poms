@@ -30,17 +30,17 @@ Route::get('users','\App\Http\Controllers\UserController@getUsers');
 Route::get('request','\App\Http\Controllers\RequestController@getReqInfo');
 Route::get('districts','\App\Http\Controllers\RegionsController@show');
 
-
+Route::post('edit','\App\Http\Controllers\UserController@update');
 Route::post('addRegion','\App\Http\Controllers\RegionsController@store');
 Route::post('addRole','\App\Http\Controllers\RolesController@store');
 Route::post('addDivision','\App\Http\Controllers\DivisionsController@store');
 Route::post('makeRequest','\App\Http\Controllers\RequestController@makeRequest');
 Route::post('addDistrict','\App\Http\Controllers\District_councilController@store');
 
-// Route::get('district', function(){
-//     return view('Admin.addDistrict');
-// });
 
+Route::get('role', function () {
+    return view('Admin.addDivision');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

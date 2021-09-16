@@ -25,65 +25,70 @@
     @include('layouts.web_header')
     @include('layouts.header')
     {{-- @include('layouts.navibar') --}}
-
     <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
 
     <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
-        <form>
+   
+            @foreach($user as $user)     
+        <form method="post" action="/edit">
+        @csrf
             <div class="form-group row">
               <label for="inputFirstName" class="col-sm-auto col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                <input type="text" name="firstName" class="form-control" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" required>
               </div>
             </div>
             <div class="form-group row">
               <label for="inputLastName" class="col-sm-auto col-form-label mx-3">Last Name</label>
               <div class="col-sm-8 form-inputs">
-                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                <input type="text" name="lastName" class="form-control" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}" required>
               </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-auto col-form-label mx-4">  &ensp; &ensp;Email</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{$user->email}}" readonly=true>
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="inputRank" class="col-sm-auto col-form-label mx-4">  &ensp; &ensp;Rank</label>
+              <!-- <div class="form-group row">
+                <label for="inputDivision" class="col-sm-auto col-form-label mx-3">  &ensp; &ensp;Rank</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="text" class="form-control" id="inputRank" placeholder="Rank">
-                </div>
-              </div>
+                  <select name="divisionId" class="form-control form-select">
+                  <option value="{{$user -> divisionId}}">{{$user->divisionTitle}}</option>
+                    @foreach($divisions as $division)
+                    <option value="{{$division -> divisionId}}">{{$division -> divisionTitle}}</option>
+                    @endforeach
+                </select>
+                </div> -->
               <div class="form-group row">
                 <label for="inputDivision" class="col-sm-auto col-form-label mx-3">  &ensp; &ensp;Division</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="text" class="form-control" id="inputDivision" placeholder="Division">
+                  <select name="divisionId" class="form-control form-select">
+                  <option value="{{$user -> divisionId}}">{{$user->divisionTitle}}</option>
+                    @foreach($divisions as $division)
+                    <option value="{{$division -> divisionId}}" required>{{$division -> divisionTitle}}</option>
+                    @endforeach
+                </select>
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPhoneNo" class="col-sm-auto col-form-label mx-3">Phone No</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="text" class="form-control" id="inputPhoneNo" placeholder="Phone Number">
+                  <input type="text" name="phone" class="form-control" id="inputPhoneNo" placeholder="Phone Number" value="{{$user->phone}}" required>
                 </div>
               </div>
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-auto col-form-label mx-3">Password</label>
                 <div class="col-sm-8 form-inputs">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password" >
                 </div>
-              </div>
+              </div> -->
               
-                <button type="button" class="btn btn-primary col-2 offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:20px;" >Save</button>
-             
-             
+                <button type="submit" class="btn btn-primary col-md-2 offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:20px;" >Save</button>
         </form>
+        @endforeach
     </div>
-    {{-- <div style="background-color: yellow; width:600px; border: solid black; margin-left:500px; padding-left:50px;">
-        <h2>Mambo Juju</h2>
-       <p>Umependeza na shati lako la damu ya mzee</p>
-       <h2>Puttin yupo hapa anaangalia movie</h2>
-    </div> --}}
-   
+
 </body>
 </html>
 
