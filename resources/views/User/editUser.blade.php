@@ -24,13 +24,19 @@
 <body>
     @include('layouts.web_header')
     @include('layouts.header')
+    
+
     {{-- @include('layouts.navibar') --}}
-    <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
+   
+
 
     <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
+
+    <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
+
             <div class="form-group row">
               <label for="inputFirstName" class="col-sm-auto col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
@@ -91,7 +97,7 @@
         </form>
         @endforeach
     </div>
-    
+    @include('layouts.footer')
 
 </body>
 </html>
