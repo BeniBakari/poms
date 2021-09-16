@@ -37,68 +37,65 @@
             <div class="form-group row">
               <label for="inputFirstName" class="col-sm-auto col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input name="firstName" type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                <input type="text" name="firstName" class="form-control" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" required>
+
+   
               </div>
             </div>
             <div class="form-group row">
               <label for="inputLastName" class="col-sm-auto col-form-label mx-3">Last Name</label>
               <div class="col-sm-8 form-inputs">
-                <input name="lastName" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+
+                <input type="text" name="lastName" class="form-control" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}" required>
+
               </div>
             </div>
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-auto col-form-label mx-3">Email</label>
                 <div class="col-sm-8 form-inputs">
-                  <input name="email" type="email" class="form-control offset-1" id="inputEmail3" placeholder="Email">
+
+                  <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{$user->email}}" readonly=true>
                 </div>
               </div>
+              <!-- <div class="form-group row">
+                <label for="inputDivision" class="col-sm-auto col-form-label mx-3">  &ensp; &ensp;Rank</label>
+                <div class="col-sm-8 form-inputs">
+                  <select name="divisionId" class="form-control form-select">
+                  <option value="{{$user -> divisionId}}">{{$user->divisionTitle}}</option>
+                    @foreach($divisions as $division)
+                    <option value="{{$division -> divisionId}}">{{$division -> divisionTitle}}</option>
+                    @endforeach
+                </select>
+                </div> -->
               <div class="form-group row">
-                <label for="inputRank" class="col-sm-auto col-form-label mx-3">Rank</label>
-                <div class="col-sm-8 form-inputs">              
-                    <select name="rank" class="form-control offset-1" id="inputRank">
-                        <option selected>Choose</option>
-                        <option value="1">DICT</option>
-                        <option value="2">PMU</option>
-                        <option value="3">DIFT</option>
-                        <option value="4">DUD</option>   
-                      </select>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputDivision" class="col-sm-auto col-form-label mx-3">Division</label>
-                <div class="col-sm-8 form-inputs ">
-                  <input name="divisionId" type="text" class="form-control mx-3" id="inputDivision" placeholder="Division">
+                <label for="inputDivision" class="col-sm-auto col-form-label mx-3">  &ensp; &ensp;Division</label>
+                <div class="col-sm-8 form-inputs">
+                  <select name="divisionId" class="form-control form-select">
+                  <option value="{{$user -> divisionId}}">{{$user->divisionTitle}}</option>
+                    @foreach($divisions as $division)
+                    <option value="{{$division -> divisionId}}" required>{{$division -> divisionTitle}}</option>
+                    @endforeach
+                </select>
+
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPhoneNo" class="col-sm-auto col-form-label mx-3">Phone No</label>
                 <div class="col-sm-8 form-inputs">
-                  <input name="phone" type="text" class="form-control" id="inputPhoneNo" placeholder="Phone Number">
+
+                  <input type="text" name="phone" class="form-control" id="inputPhoneNo" placeholder="Phone Number" value="{{$user->phone}}" required>
+
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="inputPassword3" class="col-sm-auto col-form-label mx-3">Password</label>
-                <div class="col-sm-8 form-inputs">
-                  <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputRole" class="col-sm-auto col-form-label mx-3 ">Role</label>
-                <div class="col-sm-8 form-inputs">              
-                    <select name="roleId" class="form-control offset-1" id="inputRole">
-                        <option selected>Choose</option>
-                        <option value="1">DICT</option>
-                        <option value="2">PMU</option>
-                        <option value="3">DIFT</option>
-                        <option value="4">DUD</option>   
-                      </select>
-                </div>
-              </div>
+             
               
+
               <button type="submit" class="btn btn-primary   offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>       
         </form>
+        @endforeach
     </div>
     @include('layouts.footer')
+
 </body>
 </html>
 

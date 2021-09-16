@@ -19,15 +19,23 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body{
+            font-family: Raleway;
+        }
+        
+     .form-inputs{
+        color: #3D3A3A;
+		border: none;
+		border-bottom: 2px solid #013C5C;
+     }
+
+    </style>
 </head>
 <body>
     <div id="app">
         @include('layouts.header')
-            <div style=" float: left; width: 300px; background-color: magenta;">    
-
-                @include('layouts.navibar')
-
-            </div>
+            
         <main class="py-4" >
             @yield('content')
         </main>

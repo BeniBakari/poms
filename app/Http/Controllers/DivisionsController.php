@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Division;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DivisionsController extends Controller
 {
@@ -15,6 +16,20 @@ class DivisionsController extends Controller
     public function index()
     {
         //
+    }
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'divisionTitle' => ['required', 'string','min:4', 'max:40'],
+            'divisionDesc' => ['required', 'string','min:50', 'max:200']
+        ]);
     }
 
     /**
@@ -38,8 +53,14 @@ class DivisionsController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->all();
-        if($this->create($data))
+        $validate = $this->validator($data);
+        if($validate){
+            return redirect()->back()->withErrors($validate->errors());
+        }
+
+        else if($this->create($data))
             return "boom";
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use DB;
 
 use Illuminate\Http\Request;
@@ -27,9 +28,10 @@ class UserController extends Controller
 
     public function getProfile(Request $request)
     {
-        $userProfile = DB::select('select * from users where id=?', [$request->id]);
-        if($userProfile != null)
-        return $userProfile;
+        $user = DB::select('select id,firstName,lastName,email,gender,phone,status,password,roleId,district_councilId,users.divisionId,divisions.divisionTitle from users,divisions where users.divisionId=divisions.divisionId and id=?', [$request->id]);
+        $divisions  = DB::select('select divisionId,divisionTitle from divisions');
+        if($user != null)
+        return view('User.editUser', ['user' =>$user, 'divisions' => $divisions]);
         else
             return "requested user not available";
     }
@@ -40,5 +42,18 @@ class UserController extends Controller
         $divisions = DB::select('select *from divisions');
         
             return view('Admin.users', ['users' => $users, 'divisions'=> $divisions]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        if(DB::update('update users set firstName=?, lastName=?, divisionId=?,phone=? where email=?', [$data['firstName'],$data['lastName'],$data['divisionId'],$data['phone'],$data['email']]))
+        {
+            return redirect('users');
+        }
+        else {
+            return "nothing changed";
+        }
+        //return $data; 
     }
 }
