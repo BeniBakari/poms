@@ -32,9 +32,8 @@
     <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
 
     <div class="card card-body mx-auto mb-2" style="width: 60%; border-radius:10px;">
-      @foreach ($user as $user)
-        
-      @endforeach
+      
+      @foreach ($user as $user)  
         <form>
             @csrf
             <div class="form-group row">
