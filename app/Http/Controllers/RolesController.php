@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RolesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +22,20 @@ class RolesController extends Controller
     public function index()
     {
         //
+    }
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'roleTitle' => ['required', 'string','min:4', 'max:40','unique:roles'],
+            'roleDescription' => ['required', 'string','min:50', 'max:200']
+        ]);
     }
 
     /**
@@ -26,7 +47,7 @@ class RolesController extends Controller
     {
         return Role::create([
             'roleTitle' => $data['roleTitle'],
-            'roleDesc' => $data['roleDesc']
+            'roleDesc' => $data['roleDescription']
         ]);
     }
 
@@ -39,7 +60,11 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if($this->create($data))
+        $validate = $this->validator($data);
+        if($validate){
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        else if($this->create($data))
             return "boom";
     }
 

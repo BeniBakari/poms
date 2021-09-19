@@ -56,7 +56,11 @@ class RegionsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if($this->create($data))
+        $validate = $this->validator($data);
+        if($validate){
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        else if($this->create($data))
         return "Boom";
         else 
             return "something went wrong";
