@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- <!--  end of bootstrap link -->
- <style>
-     .form-inputs input{
-        color: #3D3A3A;
-		border: none;
-		border-bottom: 2px solid #013C5C;
-     }
- </style>
-</head>
-<body>
-    @include('layouts.web_header')
-    @include('layouts.header')
-    
-
-    {{-- @include('layouts.navibar') --}}
-   
-
-
+@extends('layouts.app')
+@section('content')
     <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
             @foreach($user as $user)     
         <form method="post" action="/edit">
@@ -97,9 +67,6 @@
         </form>
         @endforeach
     </div>
-    @include('layouts.footer')
-
-</body>
-</html>
+@endsection
 
 

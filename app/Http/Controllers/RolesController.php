@@ -9,9 +9,14 @@ use Illuminate\Support\Facades\Validator;
 class RolesController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
 
     /**
@@ -65,7 +70,7 @@ class RolesController extends Controller
             return redirect()->back()->withErrors($validate->errors());
         }
         else if($this->create($data))
-            return "boom";
+            return redirect('requests');
     }
 
     /**
