@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class District_councilController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -46,7 +51,7 @@ class District_councilController extends Controller
     {
         $data = $request->all();
         if($this->create($data))
-            return "boom";
+            return redirect('requests');
     }
 
     /**

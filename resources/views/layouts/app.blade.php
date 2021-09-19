@@ -8,38 +8,302 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @include('layouts.web_header')
+        <!--Meta tag to disable user manual resizing-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="navbar.css">
+        <!--Link for the icons used-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        @include('layouts.web_header')
+    </head>
+        <style>
+            *{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+/*Header Styling*/
+nav{
+    background: #013c5c;
+    line-height: 80px;
+    
+    position: fixed;
+    width: 100%;
+}
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+/*Header Text Styling*/
+nav label{
+    line-height: 20px;
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin-left: 50px;
+    cursor: pointer;
+}
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        body{
-            font-family: Raleway;
-        }
-        
-     .form-inputs{
+/*Header logo Styling*/
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+/*Icons styling*/
+.icons{
+    background: #002f4b;
+    width: 100%;
+    padding-top: 85px;
+    display: inline-block;
+}
+
+/*Text beside icons Styling*/
+.icons label{
+    line-height: 50px;
+    font-size: 30px;
+    color: white;
+    font-weight: 100;
+    margin-left: 50px;
+}
+
+/*Individual icon Styling*/
+.icons #bars{
+    cursor: pointer;
+    float: left;
+    padding: 10px 0px 0px 10px;
+}
+
+/*Individual icon Styling*/
+.icons #logout{
+    cursor: pointer;
+    float: right;
+    padding: 10px 10px 0px 0px;
+}
+
+/*Respective Page Styling*/
+.page{
+    margin-left: auto;
+}
+
+/*Change Password Page Styling*/
+.page{
+    max-width: 80%;
+    width: 100%;
+      
+    
+  }
+
+/*Sidenav Styling*/
+.side-menu{
+    position: fixed;
+    background: #013c5c;
+    width: 185px;
+    height: 100.4%;
+    margin-top: 0px;
+}
+
+/*Sidenav block styling*/
+.side-menu a{
+    display: block;
+    line-height: 60px; 
+    transition: 0.5s;
+}
+
+/*Sidenav block hover styling*/
+.side-menu a:hover{
+    background: rgb(20,54,165);
+    padding-left: 20px;
+}
+
+/*Sidenav text styling*/
+.side-menu span{
+    
+    margin-left: 10px;
+    color: white;
+}
+
+/*Sidenav icon styling*/
+.side-menu i{
+    font-size: 100%;
+    margin-left: 5px;
+    color: white;
+}
+
+/*Checkbox Hack Styling*/
+#menu{
+    display: none;
+}
+
+/*Sidenav logout btn styling*/
+.side-menu .Logout{
+    display: none;
+}
+
+/*Resizing and responsivity of the sidenav below 1160px*/
+@media (max-width:1160px){
+
+    .side-menu a span{
+        display: none;
+    }
+
+    .side-menu{
+        width: 100px;
+    }
+
+    .side-menu a i{
+        display: block;
+        line-height: 80px;
+        text-align: center;
+        margin-left: 0;
+        font-size: 35px;
+    }
+
+    .page{
+        display: block;
+    }
+}
+
+/*Resizing and responsivity of the sidenav below 700px*/
+@media (max-width:700px){
+
+    .side-menu{
+
+        width: 100%;
+        text-align: center;
+        left:100%;
+        background-color: #013c5c;
+        transition: all 0.5s;
+    }
+
+    .side-menu a i{
+
+        display: none;
+    }
+
+    .side-menu a span{
+
+        display: block;
+    }
+
+    .side-menu .Logout{
+
+        display: block;
+    }
+
+
+    nav .menu-bar{
+
+        display: block;
+    }
+}
+
+/*Check box hack for sidenav below 700px*/
+#menu:checked ~ .side-menu{
+    left:0;
+}
+
+/*Footer Styling*/
+footer{
+    color:white;
+    
+    
+    font-weight: 300;
+    background-color: #1C1B1B; 
+    display: block; 
+    bottom: 0; 
+    position: fixed; 
+    width: 100%;
+}
+
+/*Resizing and responsivity of the change password form below 700px*/
+@media (max-width:425px) {
+    .page .form .inputfield{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .page .form .inputfield label{
+      margin-bottom: 5px;
+    }
+    .page .form .inputfield.terms{
+      flex-direction: row;
+    }
+  }
+
+  .form-inputs input{
         color: #3D3A3A;
-		border: none;
-		border-bottom: 2px solid #013C5C;
-     }
+        border: none;
+        border-bottom: 2px solid #013C5C;   
+    }
+    .bg-color{
+        backgroud-color: #013C5C;
+    }
+     .form-control:focus {
+                    box-shadow: none;
+                }
+        </style>
+   
+    <body>
+      
+      <!--Checkbox hack to mimic onclick event-->
+      <input type="checkbox" id="menu">
 
-    </style>
-</head>
-<body>
-    <div id="app">
-        @include('layouts.header')
-            
-        <main class="py-4" >
+      <!--Navbar-->
+      <nav>
+
+          <label>POM-PORALG</label>
+          
+          <!--Logo img-->
+          <ul>
+              <img src="#">Logo
+          </ul>
+
+      </nav> 
+
+      <!--Icons for sidenav and logout-->
+      <div class="icons">
+        <label for="menu">
+          <!--Icons-->
+          <i class="fa fa-bars" id="bars"></i>
+          <i class="fa fa-power-off" id="logout"><span></span></i>
+        </label>
+      </div>
+      
+      
+      <!--Sidenav-->
+      <div class="side-menu">
+
+        <a href="profile?id={{Auth::user()->id}}"><i class="fa fa-user-circle-o"></i><span>Profile</span></a>
+        <a href="/request"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/makeRequest"><i class="fa fa-envelope"></i><span>Make Request</span></a>
+        @if(Auth::user()->roleId == 1) 
+        <a href="/manageUsers"><i class="fa fa-drivers-license"></i><span>Manage User</span></a>
+        @endif
+        <a href="/changepassword"><i class="fa fa-edit"></i><span>Change password</span></a>
+
+        <a class="Logo" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <span>{{ __('Logout') }}</span>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+
+      </div>
+
+      <!--Respective pages-->
+      <div class="page">
             @yield('content')
-        </main>
-        
-    </div>
-</body>
+        </div>
+      
+      <!--Footer-->
+      <footer class="text-center">
+        <span style="font-size: 80%;"><i>Copyright by PORALG 2021</i></span>
+      </footer>
+
+    </body>
+
 </html>
+

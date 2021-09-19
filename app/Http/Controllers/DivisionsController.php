@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 class DivisionsController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -67,7 +72,7 @@ class DivisionsController extends Controller
         }
 
         else if($this->create($data))
-            return "boom";
+            return redirect('requests');
     }
 
     /**

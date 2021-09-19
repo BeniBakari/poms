@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="card-body w-50 mx-auto offset-5 card card-body">
+<div class="card-body mx-auto offset-5 card card-body">
 <form method="POST" action="/addRegion" class="text-center">
         @csrf
 		<div class="card-header">Add New Region</div>

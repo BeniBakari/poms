@@ -15,9 +15,7 @@
         .top-content{
            
         }  
-    </style>
-
-        
+    </style>   
     <div class="top-content row">
         <form class="d-flex col-md-4 offset-2">
                 <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="Search ser" aria-label="Search">
@@ -46,9 +44,6 @@
         
     </div>
     
-    <!-- <div style="float:left; width:300px;">
-        @include('layouts.navbar')
-    </div> -->
     <div id="content" class="content">
         <table class="table" >
             <thead>
@@ -64,8 +59,7 @@
             </thead>
             <tbody>
                 <?php $num=0; ?>
-                @foreach($users as $user)
-                    
+                @foreach($users as $user)  
                     <tr>
                         <td><?php echo ++$num; ?></td> 
                         <td>{{$user -> id}}</td>

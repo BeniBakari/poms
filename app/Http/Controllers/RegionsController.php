@@ -10,6 +10,17 @@ use DB;
 
 class RegionsController extends Controller
 {
+
+/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +72,7 @@ class RegionsController extends Controller
             return redirect()->back()->withErrors($validate->errors());
         }
         else if($this->create($data))
-        return "Boom";
+        return redirect('requests');
         else 
             return "something went wrong";
     }

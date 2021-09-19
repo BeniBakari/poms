@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="card col-md-9 offset-2">
+<div class="card">
     <div class="card-header">
         <h3 class="text-center">Make Request</h3>
     </div>

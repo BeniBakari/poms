@@ -23,7 +23,7 @@
         padding: 1%;
         border-bottom-left-radius: 35px;
         border-bottom-right-radius: 35px;
-        /*margin-bottom: 30px;*/
+        
     }   
     .form-button{
         height: 100px;
