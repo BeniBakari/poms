@@ -89,7 +89,7 @@
         </table>
         <span id="chini"></span>
     </div>
-    <script>
+    <!-- <script>
 function getUsers(val) {
     document.getElementById('chini').innerHTML = val
   var xhttp;    
@@ -104,5 +104,5 @@ function getUsers(val) {
   xhttp.open("POST", "users?value="+val, true);
   xhttp.send();
 }
-</script>
+</script> -->
 @endsection
