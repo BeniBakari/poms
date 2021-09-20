@@ -75,7 +75,7 @@
 
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary   offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>       
+              <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
         </form>
         @endforeach
     </div>

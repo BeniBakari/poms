@@ -10,12 +10,6 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-<<<<<<< HEAD
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-=======
     /**
      * Create a new controller instance.
      *
@@ -25,7 +19,6 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
->>>>>>> 6a7d61efe77454d4b90cb1985b715d3e518dd40c
 
     public function getInfo()
     {
