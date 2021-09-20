@@ -22,9 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('phone',10)->unique();
             $table->string('status');
             $table->string('password',60);
+            $table->integer('rankId')->unsigned();
             $table->integer('roleId')->unsigned();
             $table->integer('district_councilId')->unsigned();
             $table->integer('divisionId')->unsigned();
+            $table->foreign('rankId')->references('rankId')->on('ranks')->onUpdate('cascade')->ondelete('null');
             $table->foreign('divisionId')->references('divisionId')->on('divisions')->onUpdate('cascade')->ondelete('null');
             $table->foreign('roleId')->references('roleId')->on('roles')->onUpdate('cascade')->ondelete('null');
             $table->foreign('district_councilId')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->ondelete('null');

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -39,7 +39,7 @@ class RolesController extends Controller
     {
         return Validator::make($data, [
             'roleTitle' => ['required', 'string','min:4', 'max:40','unique:roles'],
-            'roleDescription' => ['required', 'string','min:50', 'max:200']
+            'roleDescription' => ['required', 'string','min:5', 'max:200']
         ]);
     }
 
@@ -65,12 +65,14 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        
         $validate = $this->validator($data);
-        if($validate){
+        
+        if(!$validate->errors()->isEmpty()){
             return redirect()->back()->withErrors($validate->errors());
         }
         else if($this->create($data))
-            return redirect('requests');
+            return redirect('roles');
     }
 
     /**
@@ -79,9 +81,10 @@ class RolesController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show()
     {
-        //
+        $roles = DB::select('select *from roles');
+        return view('Admin.roles',['roles' => $roles]);
     }
 
     /**

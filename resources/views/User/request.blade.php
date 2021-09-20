@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="card">
     <div class="card-header">
         <h3 class="text-center">Make Request</h3>
@@ -11,7 +12,7 @@
                <div class="col offset-3">
                     <label for="requestType" class="float-left"  style="margin-right:10%">Permission Type</label>
                     <select name="requestType" id="" class="form-control form-control-sm form-select col-md-4">
-                        <option>Select</option>
+                        <option value=" ">Select</option>
                         <option value="personal">Personal</option>
                         <option value="official">Official</option>
                     </select>

@@ -16,9 +16,7 @@
            
         }  
     </style>   
-    
- 
-    
+
     <div id="content" class="content">
         <table class="table" >
             <thead>
@@ -81,10 +79,10 @@
                                     
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <?php if($request -> approveStatus != "cancelled" || $request -> approveStatus == "approved" || $request -> approveStatus == "disapproved") {?>
-                                            <!-- <form method="post" action="/cancel?requestId={{$request->requestId}}">
-                                                @csrf -->
+                                            <form method="post" action="/cancel?requestId={{$request->requestId}}">
+                                                @csrf
                                                  <button type="submit" class="btn btn-danger">Cancel Request</button>
-                                         <!-- </form> -->
+                                         </form>
                                         <?php }?>
                                 </div>
                             </div>

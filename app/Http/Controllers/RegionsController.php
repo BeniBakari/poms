@@ -41,7 +41,7 @@ class RegionsController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'regionName' => ['required', 'string', 'max:30' ,'min:5','unique:regions'],      
+            'regionName' => ['required', 'max:30' ,'min:5','unique:regions']    
         ]);
         
     }
@@ -68,13 +68,14 @@ class RegionsController extends Controller
     {
         $data = $request->all();
         $validate = $this->validator($data);
-        if($validate){
+        if(!$validate->errors()->isEmpty()){
             return redirect()->back()->withErrors($validate->errors());
         }
         else if($this->create($data))
-        return redirect('requests');
+        return redirect('regions');
         else 
             return "something went wrong";
+        
     }
 
     /**
@@ -87,7 +88,7 @@ class RegionsController extends Controller
     {
         //$regions = DB::table('regions')->pluck('regionId','regionName')->get('all');
         $regions =DB::select('select regionId,regionName from regions');
-        return view('Admin.addDistrict',['regions'=>$regions]);
+        return view('Admin.regions',['regions'=>$regions]);
     }
 
     /**

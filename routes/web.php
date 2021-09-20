@@ -18,23 +18,30 @@ Route::get('/', function () {
     return redirect('request');
 });
 
-Route::get('editUser', function () {
-    return view('User.editUser');
+Route::get('addRegions', function () {
+    return view('Admin.addRegion');
 });
 Route::get('manageUsers', function () {
     return view('Admin.manageUsers');
+})->middleware('auth');
+Route::get('changepassword', function () {
+    return view('User.changepassword');
 });
 Route::get('addUser','\App\Http\Controllers\UserController@getInfo');
 Route::get('profile','\App\Http\Controllers\UserController@getProfile');
-Route::get('deactivate','\App\Http\Controllers\UserController@deactivate');
-Route::get('activate','\App\Http\Controllers\UserController@activate');
+Route::get('deactivate','\App\Http\Controllers\UserController@deactivate')->middleware('isAdmin');
+Route::get('activate','\App\Http\Controllers\UserController@activate')->middleware('isAdmin');
 Route::get('users','\App\Http\Controllers\UserController@getUsers');
 Route::get('makeRequest','\App\Http\Controllers\RequestsController@getReqInfo');
-Route::get('districts','\App\Http\Controllers\RegionsController@show');
+Route::get('regions','\App\Http\Controllers\RegionsController@show');
 Route::get('request','\App\Http\Controllers\RequestsController@myRequest');
-Route::get('request','\App\Http\Controllers\RequestsController@supervisorRequest');
+Route::get('supervisor','\App\Http\Controllers\RequestsController@supervisorRequest');
+Route::get('districts','\App\Http\Controllers\District_councilController@show');
+Route::get('roles','\App\Http\Controllers\RolesController@show');
 
 Route::post('cancel','\App\Http\Controllers\RequestsController@cancel');
+Route::post('approve','\App\Http\Controllers\RequestsController@approve');
+Route::post('disapprove','\App\Http\Controllers\RequestsController@approve');
 Route::post('changepass','\App\Http\Controllers\ChangePassword@change');
 Route::post('edit','\App\Http\Controllers\UserController@update');
 Route::post('makeRequest','\App\Http\Controllers\RequestsController@store');
@@ -46,4 +53,4 @@ Route::post('addDistrict','\App\Http\Controllers\District_councilController@stor
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -84,16 +84,18 @@
                                     
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     
-                                        <?php if($request -> approveStatus != "cancelled" || $request -> approveStatus == "approved" || $request -> approveStatus == "disapproved" ) 
+                                        <?php if($request -> approveStatus != "cancelled" && $request -> approveStatus != "approved" && $request -> approveStatus != "disapproved" ) 
                                         {
                                             if($request -> requestStatus >= Auth::user()->roleId){
                                             ?>
-                                            <!-- <form method="post" action="/cancel?requestId={{$request->requestId}}">
-                                                @csrf -->
-                                               
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Approve</button>
-                                                 <button type="submit" class="btn btn-danger">Disaprove</button>
-                                         <!-- </form> -->
+                                            <form method="post" action="/approve?requestId={{$request->requestId}}">
+                                                @csrf
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">Approve</button>   
+                                            </form>
+                                            <form method="post" action="/disapprove?requestId={{$request->requestId}}">
+                                                @csrf
+                                                 <button type="submit" class="btn btn-danger">Disaprovei</button>
+                                         </form>
                                         <?php }}?>
                                 </div>
                             </div>

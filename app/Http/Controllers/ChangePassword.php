@@ -33,9 +33,8 @@ class ChangePassword extends Controller
         $password = Hash::make($request -> newpassword); 
         
         $validate = $this->validator($request->all());
-        if($validate)
+        if(!$validate->errors()->isEmpty())
         {
-           // return $validate->errors();
             return redirect()->back()->withErrors($validate->errors());
         }
         else 
@@ -51,14 +50,14 @@ class ChangePassword extends Controller
                 }
                 else {
                     session()->flash('message','failed to change password!');
-                    return redirect()->bakc();
+                    return redirect()->back();
                 }
             }
         }
         else {
             return "Old";
                 session()->flash('message','Incorrect current password!');
-                return redirect()->bakc();  
+                return redirect()->back();  
         }
     }
 }

@@ -34,7 +34,7 @@ class RequestsController extends Controller
             'requestType' => ['required'],
             'source' =>['required'],
             'destination' => ['required'],
-            'subject' => ['required','min:20','max:400'],
+            'subject' => ['required','min:10','max:400'],
             'startDate' => ['required'],
             'endDate' => ['required']
         ]);
@@ -67,7 +67,7 @@ class RequestsController extends Controller
             'destination' => $data['destination'],
             'requestType' => $data['requestType'],
             'requestDesc' => $data['subject'],
-            'requestStatus' => 1 
+            'requestStatus' => 3 
         ]);
 
 
@@ -82,11 +82,11 @@ class RequestsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // $validate = $this->validator($data);
-        // if($validate){
-        //     return redirect()->back()->withErrors($validate->errors());
-        // }
-         if($this->create($data))
+        $validate = $this->validator($data);
+        if(!$validate->errors()->isEmpty()){
+            return redirect()->back ()->withErrors($validate->errors());
+        }
+        else if($this->create($data))
         return redirect('request');
         else 
             return "something went wrong";
@@ -106,17 +106,42 @@ class RequestsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Requests  $requests
+    
      * @return \Illuminate\Http\Response
      */
-    public function cancel(Requests $requests)
-    {
-        if(DB::update('update requests set approveStatus=? where requestId=?',["cancelled",$requests->requestId]))
-        {
-            return "boom";
+    public function cancel(Request $request)
+    {   
+        $cancel = DB::update('update requests set approveStatus=? where requestId=?',["cancelled",$request->requestId]);
+        if($cancel)
+        { 
+            return redirect('request');
         }
         else {
-            return $requests->requestId;
+            return "something went wrong";
+        }
+    }
+
+    public function approve(Request $request)
+    {   
+        $approve = DB::update('update requests set approveStatus=? where requestId=?',["approved",$request->requestId]);
+        if($approve)
+        { 
+            return redirect('supervisor');
+        }
+        else {
+            return "something went wrong";
+        }
+    }
+
+    public function disapprove(Request $request)
+    {   
+        $disapprove = DB::update('update requests set approveStatus=? where requestId=?',["disapproved",$request->requestId]);
+        if($disapprove)
+        { 
+            return redirect('supervisor');
+        }
+        else {
+            return "something went wrong";
         }
     }
 
@@ -129,7 +154,7 @@ class RequestsController extends Controller
      */
     public function update(Request $request, Requests $requests)
     {
-        //
+        
     }
 
     /**

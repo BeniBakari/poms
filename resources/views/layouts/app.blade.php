@@ -243,7 +243,7 @@ footer{
                 }
         </style>
    
-    <body>
+    <body onload="getUsers(1)">
       
       <!--Checkbox hack to mimic onclick event-->
       <input type="checkbox" id="menu">
@@ -278,18 +278,26 @@ footer{
         <a href="/makeRequest"><i class="fa fa-envelope"></i><span>Make Request</span></a>
         @if(Auth::user()->roleId == 1) 
         <a href="/manageUsers"><i class="fa fa-drivers-license"></i><span>Manage User</span></a>
+        <a href="/roles"><i class="fa fa-drivers-license"></i><span>Manage Roles</span></a>
+        <a href="/regions"><i class="fa fa-drivers-license"></i><span>Manage Regions</span></a>
+        <a href="/districts"><i class="fa fa-drivers-license"></i><span>Manage Districts</span></a>
         @endif
+
+        @if(Auth::user()->roleId == 2 || Auth::user() -> roleId == 3)
+                <a href="/supervisor"><i class="fa fa-drivers-license"></i><span>Requests</span></a>
+        @endif
+
         <a href="/changepassword"><i class="fa fa-edit"></i><span>Change password</span></a>
 
         <a class="Logo" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <span>{{ __('Logout') }}</span>
-                                    </a>
+                  onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                   <span>{{ __('Logout') }}</span>
+        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
 
       </div>
 

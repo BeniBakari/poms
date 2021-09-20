@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\District_council;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
+use DB;
 class District_councilController extends Controller
 {
 
@@ -23,6 +24,20 @@ class District_councilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'districtName' => ['required', 'string','min:4', 'max:40','unique:district_councils'],
+            'region' => ['required']
+        ]);
+    }
     public function index()
     {
         //
@@ -37,7 +52,7 @@ class District_councilController extends Controller
     {
         return District_council::create([
             'districtName' => $data['districtName'],
-            'regionId' =>$data['regionId']
+            'regionId' =>$data['region']
         ]);
     }
 
@@ -50,8 +65,14 @@ class District_councilController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if($this->create($data))
-            return redirect('requests');
+        $validate = $this->validator($data);
+        
+        if(!$validate->errors()->isEmpty()){
+            //return $validate->errors();
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        else if($this->create($data))
+            return redirect('districts');
     }
 
     /**
@@ -60,9 +81,11 @@ class District_councilController extends Controller
      * @param  \App\Models\District_council  $district_council
      * @return \Illuminate\Http\Response
      */
-    public function show(District_council $district_council)
-    {
-        //
+    public function show()
+    {   
+        $regions = DB::select('select *from regions');
+        $districts = DB::select('select *from district_councils, regions where regions.regionId = district_councils.regionId');
+        return view('Admin.districts',['districts' => $districts,'regions'=>$regions]);
     }
 
     /**

@@ -54,9 +54,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                
 
                 <div class="card-body">
+                    <div class="row justify-content-center mb-2">
+                        <h3 class="col-md-6">Register New User</h3>
+                    </div>
                     <form method="POST" action="{{ route('register') }}" class="form-inputs">
                         @csrf
 
@@ -116,12 +119,30 @@
                             </div>
                         </div>
 
+                            <div class="form-group row">
+                            <label for="divisionId" class="col-md-4 col-form-label text-md-right">{{ __('Rank') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="rankId"  class="form-select"> Select Rank
+                                   <option value=" ">Select Rank</option>
+                                    @foreach($ranks as $rank)
+                                        <option value = "{{$rank -> rankId}}"> {{$rank -> rankName}}</option>
+                                    @endforeach
+                                </select>
+                                @error('rankId')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="divisionId" class="col-md-4 col-form-label text-md-right">{{ __('Division') }}</label>
 
                             <div class="col-md-6">
                                 <select name="divisionId"  class="form-select"> Select Division
-                                   <option >Select Division</option>
+                                   <option value=" ">Select Division</option>
                                     @foreach($divisions as $division)
                                         <option value = "{{$division -> divisionId}}"> {{$division -> divisionTitle}}</option>
                                     @endforeach
@@ -139,7 +160,7 @@
 
                             <div class="col-md-6">
                                 <select name="district_councilId"  class="form-select"> Select Division
-                                    <option >Select ditrict</option>
+                                    <option value=" ">Select ditrict</option>
                                     @foreach($districts as $district)
                                         <option value = "{{$district -> district_councilId}}"> {{$district -> districtName}}</option>
                                     @endforeach
@@ -168,15 +189,23 @@
                             </div>
                         </div>
 
-                        
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                        </div>
+                            </div>
+
+                        <div class="form-button text-center text-white">
+                    <button type="submit" class="btn btn-primary col-md-4 text-white" style="background-color:#013c5c; border-radius:20px;" >Register</button>
+          		</div>
                     </form>
                 </div>
             </div>
