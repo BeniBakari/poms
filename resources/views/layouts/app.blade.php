@@ -65,6 +65,7 @@ nav ul{
     color: white;
     font-weight: 100;
     margin-left: 50px;
+   
 }
 
 /*Individual icon Styling*/

@@ -8,6 +8,7 @@
         }
         .content{
             margin-top: 10px;
+            
         }
         tr:nth-child(even) {
                     background-color: #dddddd;
@@ -57,7 +58,7 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body" >
                                     <div>
                                         <span  class="txt-center"><b>{{$request -> firstName}} {{$request -> lastName}}</b> of division <b>{{$request -> divisionTitle}}</b> requests  From <b>{{$request -> source}} </b> to <b>{{$request ->destination}}</b></span>
                                     </div>
