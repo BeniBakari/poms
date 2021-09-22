@@ -2,7 +2,7 @@
 @section('content')
 
 <span class="p-5"></span>
-    <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
+    <div class="card card-body mx-auto" style="border-radius:10px;">
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
@@ -43,8 +43,8 @@
               <div class="form-group row">
                 <label for="inputDivision" class="col col-form-label mx-3 ">Role</label>
                 <div class="col-sm-8 form-inputs">
-                  <select name="roleId" class="form-control form-select text-center" <?php if(Auth::user()->roleId != 1) {?> disabled <?php } ?> >
-                  <option value="{{$user -> roleId}}">{{$user->roleTitle}}</option>
+                  <select name="roleId"   class="form-control form-select text-center" @if(Auth::user()->roleId != 1)?> disabled @endif >
+                  <option value="{{$user -> roleId}}" selected>{{$user->roleTitle}}</option>
                                     @foreach($roles as $role)
                                         <option value = "{{$role -> roleId}}"> {{$role -> roleTitle}}</option>
                                     @endforeach
@@ -55,8 +55,8 @@
               <div class="form-group row">
                 <label for="inputDivision" class="col col-form-label mx-3 ">Rank</label>
                 <div class="col-sm-8 form-inputs">
-                  <select name="rankId" class="form-control form-select text-center" <?php if(Auth::user()->roleId != 1) {?> disabled <?php } ?> >
-                  <option value="{{$user -> rankId}}">{{$user->rankName}}</option>
+                  <select name="rankId" class="form-control form-select text-center" @if(Auth::user()->roleId != 1)  disabled @endif >
+                  <option value="{{$user -> rankId}}" selected>{{$user->rankName}}</option>
                                     @foreach($ranks as $rank)
                                         <option value = "{{$rank -> rankId}}"> {{$rank -> rankName}}</option>
                                     @endforeach
@@ -66,8 +66,8 @@
               <div class="form-group row">
                 <label for="inputDivision" class="col col-form-label mx-3 ">Division</label>
                 <div class="col-sm-8 form-inputs">
-                  <select name="divisionId" class="form-control form-select text-center" <?php if(Auth::user()->roleId != 1) {?> disabled <?php } ?> >
-                  <option value="{{$user -> divisionId}}">{{$user->divisionTitle}}</option>
+                  <select name="divisionId" class="form-control form-select text-center" @if(Auth::user()->roleId != 1)  disabled @endif >
+                  <option value="{{$user -> divisionId}}" selected>{{$user->divisionTitle}}</option>
                     @foreach($divisions as $division)
                     <option value="{{$division -> divisionId}}" required>{{$division -> divisionTitle}}</option>
                     @endforeach
@@ -83,7 +83,13 @@
 
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
+              <div class="row rows justify-content-center">
+                  <button type="submit" class="btn btn-primary col-md-2  badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button> 
+                  @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)      
+                      <button type="button" class="btn btn-info col-md-4 offset-2 rounded-pill" style="margin-top: 30px;" data-toggle="modal" data-target="#resetpassword">Reset Password</button> 
+                  @endif
+              </div>
+                 
         </form>
         @endforeach
     </div>

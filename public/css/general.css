@@ -1,0 +1,247 @@
+       *{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+/*Header Styling*/
+nav{
+    top: 0;
+    background: #013c5c;
+    line-height: 80px;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+}
+
+/*Header Text Styling*/
+nav label{
+    line-height: 20px;
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+/*Header logo Styling*/
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+/*Icons styling*/
+.icons{
+    /* position: fixed; */
+    width: 100%;
+    padding-top: 100px;
+	
+}
+
+/*Text beside icons Styling*/
+.icons label{
+    line-height: 30px;
+    font-size: 30px;
+    font-weight: 100;
+	
+    /* margin-left: 50px; */
+   
+}
+
+/*Individual icon Styling*/
+.icons #bars{
+    cursor: pointer;
+    opacity: 0;
+    padding: 15px 0px 0px 5px;
+    color: #013c5c;
+}
+
+/*Individual icon Styling*/
+.icons #logout{
+    cursor: pointer;
+    color: #013c5c;
+    padding: 15px 10px 0px 0px;
+}
+
+/*Respective Page Styling*/
+.page{
+    margin-left: 20%;
+    /* position: absolute; */
+    /* margin-top: 200px; */
+  }
+
+/*Sidenav Styling*/
+.side-menu{
+    position: fixed;
+    background: #013c5c;
+    width: 185px;
+    height: 100%;
+    border-top-right-radius: 12px;
+    /* margin-top: 9px; */
+    z-index: 99;
+}
+
+/*Sidenav block styling*/
+.side-menu a{
+    display: block;
+    line-height: 60px; 
+    transition: 0.5s;
+}
+
+/*Sidenav block hover styling*/
+.side-menu a:hover{
+    text-decoration: none;
+    background: rgb(20,54,165);
+    padding-left: 20px;
+}
+
+/*Sidenav text styling*/
+.side-menu span{
+    margin-left: 10px;
+    color: white;
+}
+
+/*Sidenav icon styling*/
+.side-menu i{
+    
+    font-size: 100%;
+    margin-left: 5px;
+    color: white;
+}
+
+/*Checkbox Hack Styling*/
+#menu{
+    display: none;
+}
+
+/*Sidenav logout btn styling*/
+.side-menu .Logout{
+    display: none;
+}
+
+/*Resizing and responsivity of the sidenav below 1160px*/
+@media (max-width:1160px){
+
+    .side-menu a span{
+        display: none;
+    }
+
+    .side-menu{
+        width: 100px;
+    }
+
+    .side-menu a i{
+        display: block;
+        line-height: 80px;
+        text-align: center;
+        margin-left: 0;
+        font-size: 35px;
+    }
+
+    .page{
+        display: block;
+    }
+}
+
+/*Resizing and responsivity of the sidenav below 700px*/
+@media (max-width:700px){
+
+    .side-menu{
+        width: 100%;
+        text-align: center;
+        left:100%;
+        background-color: #013c5c;
+        transition: all 0.5s;
+    }
+
+    .side-menu a i {
+
+        display: none;
+    }
+
+    .side-menu a span{
+        line-height: 50px;
+        display: block;
+    }
+
+    .side-menu .Logout{
+
+        display: block;
+    }
+
+    .icons #bars{
+        opacity: 1;
+    } 
+    
+    .icons #logout, nav #logo{
+        display: none;
+    }
+    nav .menu-bar{
+
+        display: block;
+    }
+}
+
+/*Check box hack for sidenav below 700px*/
+#menu:checked ~ .side-menu{
+    left:0;
+}
+
+/*Footer Styling*/
+footer{
+    color:white;
+    font-weight: 300;
+    background-color: #1C1B1B; 
+    display: block; 
+    bottom: 0; 
+    z-index: 100;
+    position: fixed; 
+    width: 100%;
+}
+
+/*Resizing and responsivity of the change password form below 700px*/
+@media (max-width:425px) {
+    .page .form .inputfield{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .page .form .inputfield label{
+      margin-bottom: 5px;
+    }
+    .page .form .inputfield.terms{
+      flex-direction: row;
+    }
+  }
+
+  .form-inputs input{
+        color: #3D3A3A;
+        border: none;
+        border-bottom: 2px solid #013C5C;   
+    }
+    .bg-color{
+        background-color: #013C5C;
+    }
+     .form-control:focus {
+                    box-shadow: none;
+                }
+        .rows{
+            width: 100%;
+        }
+
+		  .btn-sm{
+            background-color: #013C5C;
+            color:white;
+        
+        }
+        .content{
+            margin-top: 10px;
+        }
+        tr:nth-child(even) {
+                    background-color: #dddddd;
+                    } 
+        .top-content{
+           
+        }  
