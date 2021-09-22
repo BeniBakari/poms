@@ -83,16 +83,7 @@
 
                 </div>
               </div>
-<<<<<<< HEAD
-              <div class="row justify-content-center">
-                    <button type="submit" class="btn btn-primary col-md-4" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>  
-                    @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)
-                    <button type="button" class="btn btn-info col-md-4 offset-2 rounded-pill" style="margin-top: 30px;" data-toggle="modal" data-target="#resetpassword">Reset Password</button>  
-                    @endif
-            </div>
-=======
               <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
->>>>>>> ac669f6c8d2f877cb28552b8aedf3f003dfe0864
         </form>
         @endforeach
     </div>
