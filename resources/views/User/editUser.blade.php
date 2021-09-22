@@ -1,17 +1,25 @@
 @extends('layouts.app')
 @section('content')
+
 <span class="p-5"></span>
     <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
 
-    <h5 class="mx-auto " style="width: 150px; " >Edit User</h5>
+    <h5 class="mx-auto " style="width: 150px; " >
+      @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)
+        Edit User
+      @else
+        My Profile
+      
+      @endif
+  </h5>
 
             <div class="form-group row">
               <label for="inputFirstName" class="col col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input type="text" name="firstName" class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" required>
+                <input type="text" name="firstName" class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" required <?php if(Auth::user()->roleId != 1) {?> readonly=true <?php } ?>>
 
 
               </div>
@@ -20,7 +28,7 @@
               <label for="inputLastName" class="col col-form-label mx-3 ">Last Name</label>
               <div class="col-md-8 form-inputs">
 
-                <input type="text" name="lastName" class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}" required>
+                <input type="text" name="lastName" class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}" required <?php if(Auth::user()->roleId != 1) {?> readonly=true <?php } ?>>
 
               </div>
             </div>
@@ -75,10 +83,52 @@
 
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary   offset-5" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>       
+              <div class="row justify-content-center">
+                    <button type="submit" class="btn btn-primary col-md-4" style="margin-top: 30px; background-color:#013c5c; border-radius:19px;" >Save</button>  
+                    @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)
+                    <button type="button" class="btn btn-info col-md-4 offset-2 rounded-pill" style="margin-top: 30px;" data-toggle="modal" data-target="#resetpassword">Reset Password</button>  
+                    @endif
+            </div>
         </form>
         @endforeach
     </div>
+    <div class="modal fade" id="resetpassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST" action="/reset?email={{$user->email}}" class="form-inputs">
+        @csrf
+				<div class="mb-3 col  row"> 
+					<label for="" class="float-left col-md-3" style="margin-right:10%"> Password</label>    
+                	 <input type="text" name="password" class="form-control col-md-6 text-center form-inputs" autocomplete="off" autofocus required>
+					 @error('password')
+                         <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
+            @enderror 
+        		</div>
+
+            <div class="mb-3 col  row"> 
+					<label for="" class="float-left col-md-3" style="margin-right:10%"> Confirm</label>    
+                	 <input type="text" name="password_confirmation" class="form-control col-md-6 text-center form-inputs" autocomplete="off" autofocus required>
+					 @error('password-confirm')
+                         <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
+            @enderror 
+        		</div>
+				
+                <div class="form-button text-center">
+                    <button type="submit" class="btn btn-primary col-md-4" style="background-color:#013c5c; border-radius:20px;" >Reset</button>
+          		</div>
+    
+        </form><button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 

@@ -22,7 +22,6 @@ class Admin
         }
         else {
             return route('login');
-        }
-        
+        }      
     }
 }

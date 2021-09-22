@@ -43,13 +43,13 @@
                         <td>{{$request -> source}}</td>
                         <td>{{$request -> requestType}}</td>
                         <td>{{$request -> destination}}</td>
-                        <td>{{$request -> requestStatus}}</td>
+                        <td>{{$request -> roleTitle}}</td>
                         <td>{{$request -> approveStatus}}</td>
                         <td>
                              <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewRequetModel{{$request -> requestId}}">view</button>                          
                         </td>
                     </tr>
-                    <div class="modal fade" id="viewRequetModel{{$request -> requestId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade " id="viewRequetModel{{$request -> requestId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                          <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -91,11 +91,11 @@
                                             ?>
                                             <form method="post" action="/approve?requestId={{$request->requestId}}">
                                                 @csrf
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">Approve</button>   
+                                                <button type="submit" class="btn btn-success">Approve</button>   
                                             </form>
                                             <form method="post" action="/disapprove?requestId={{$request->requestId}}">
                                                 @csrf
-                                                 <button type="submit" class="btn btn-danger">Disaprovei</button>
+                                                 <button type="submit" class="btn btn-danger">Disaprove</button>
                                          </form>
                                         <?php }}?>
                                 </div>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>POMS-PORALG</title>
         <!--Meta tag to disable user manual resizing-->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" type="text/css" href="navbar.css">
@@ -27,9 +27,10 @@
 
 /*Header Styling*/
 nav{
+    top: 0;
     background: #013c5c;
     line-height: 80px;
-    
+    z-index: 100;
     position: fixed;
     width: 100%;
 }
@@ -52,47 +53,40 @@ nav ul{
 
 /*Icons styling*/
 .icons{
-    background: #002f4b;
+    /* position: fixed; */
     width: 100%;
     padding-top: 85px;
-    display: inline-block;
 }
 
 /*Text beside icons Styling*/
 .icons label{
-    line-height: 50px;
+    line-height: 30px;
     font-size: 30px;
-    color: white;
     font-weight: 100;
-    margin-left: 50px;
+    /* margin-left: 50px; */
    
 }
 
 /*Individual icon Styling*/
 .icons #bars{
     cursor: pointer;
-    float: left;
-    padding: 10px 0px 0px 10px;
+    opacity: 0;
+    padding: 15px 0px 0px 5px;
+    color: black;
 }
 
 /*Individual icon Styling*/
 .icons #logout{
     cursor: pointer;
-    float: right;
-    padding: 10px 10px 0px 0px;
+    color: black;
+    padding: 15px 10px 0px 0px;
 }
 
 /*Respective Page Styling*/
 .page{
-    margin-left: auto;
-}
-
-/*Change Password Page Styling*/
-.page{
-    max-width: 80%;
-    width: 100%;
-      
-    
+    margin-left: 20%;
+    /* position: absolute; */
+    /* margin-top: 200px; */
   }
 
 /*Sidenav Styling*/
@@ -100,8 +94,10 @@ nav ul{
     position: fixed;
     background: #013c5c;
     width: 185px;
-    height: 100.4%;
-    margin-top: 0px;
+    height: 100%;
+    border-top-right-radius: 12px;
+    /* margin-top: 9px; */
+    z-index: 99;
 }
 
 /*Sidenav block styling*/
@@ -113,19 +109,20 @@ nav ul{
 
 /*Sidenav block hover styling*/
 .side-menu a:hover{
+    text-decoration: none;
     background: rgb(20,54,165);
     padding-left: 20px;
 }
 
 /*Sidenav text styling*/
 .side-menu span{
-    
     margin-left: 10px;
     color: white;
 }
 
 /*Sidenav icon styling*/
 .side-menu i{
+    
     font-size: 100%;
     margin-left: 5px;
     color: white;
@@ -169,7 +166,6 @@ nav ul{
 @media (max-width:700px){
 
     .side-menu{
-
         width: 100%;
         text-align: center;
         left:100%;
@@ -183,7 +179,7 @@ nav ul{
     }
 
     .side-menu a span{
-
+        line-height: 50px;
         display: block;
     }
 
@@ -192,7 +188,13 @@ nav ul{
         display: block;
     }
 
-
+    .icons #bars{
+        opacity: 1;
+    } 
+    
+    .icons #logout{
+        display: none;
+    }
     nav .menu-bar{
 
         display: block;
@@ -207,12 +209,11 @@ nav ul{
 /*Footer Styling*/
 footer{
     color:white;
-    
-    
     font-weight: 300;
     background-color: #1C1B1B; 
     display: block; 
     bottom: 0; 
+    z-index: 100;
     position: fixed; 
     width: 100%;
 }
@@ -242,9 +243,12 @@ footer{
      .form-control:focus {
                     box-shadow: none;
                 }
+        .rows{
+            width: 100%;
+        }
         </style>
    
-    <body onload="getUsers(1)">
+    <body >
       
       <!--Checkbox hack to mimic onclick event-->
       <input type="checkbox" id="menu">
@@ -256,29 +260,47 @@ footer{
           
           <!--Logo img-->
           <ul>
-              <img src="#">Logo
+                <a href="/request">
+                    <img src="{{ asset('tamisemi_logo.png') }}" alt="">
+                </a>
+              
           </ul>
 
       </nav> 
 
       <!--Icons for sidenav and logout-->
-      <div class="icons">
+      <!-- <div class="icons">
         <label for="menu">
-          <!--Icons-->
+          
           <i class="fa fa-bars" id="bars"></i>
           <i class="fa fa-power-off" id="logout"><span></span></i>
         </label>
+      </div> -->
+      <div class="icons">
+          <label for="menu" class=" row rows">
+              <i class="fa fa-bars col offset-1 w-100 " id="bars"></i>
+              <a class="col-sm-1 text-white"  onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                  <i class="fa fa-power-off col-sm-1 " id="logout"></i>
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+          </label>  
       </div>
       
       
       <!--Sidenav-->
-      <div class="side-menu">
+      <div class="side-menu ">
 
-        <a href="profile?id={{Auth::user()->id}}"><i class="fa fa-user-circle-o"></i><span>Profile</span></a>
-        <a href="/request"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="profile?id={{Auth::user()->id}}" class="text-white"><i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg></i><span>Profile</span></a>
+        <a href="/request" ><i class="fa fa-home "></i><span>Home</span></a>
         <a href="/makeRequest"><i class="fa fa-envelope"></i><span>Make Request</span></a>
         @if(Auth::user()->roleId == 1) 
-        <a href="/manageUsers"><i class="fa fa-drivers-license"></i><span>Manage User</span></a>
+        <a href="/manageUsers"><i class="fa fa-users" aria-hidden="true"></i><span>Manage User</span></a>
         <a href="/roles"><i class="fa fa-drivers-license"></i><span>Manage Roles</span></a>
         <a href="/regions"><i class="fa fa-drivers-license"></i><span>Manage Regions</span></a>
         <a href="/districts"><i class="fa fa-drivers-license"></i><span>Manage Districts</span></a>
@@ -289,10 +311,9 @@ footer{
         @endif
 
         <a href="/changepassword"><i class="fa fa-edit"></i><span>Change password</span></a>
-
         <a class="Logo" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
+                             document.getElementById('logout-form').submit();"><i class="fa fa-power-off " id="logout"></i>
                    <span>{{ __('Logout') }}</span>
         </a>
 

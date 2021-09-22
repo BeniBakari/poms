@@ -58,7 +58,7 @@
                 	 <input type="text" name="regionName" class="form-control col-md-6 text-center form-inputs"  placeholder="KILIMANJARO" autofocus required>
 					 @error('regionName')
                          <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
-                        @enderror 
+            @enderror 
         		</div>
 				
                 <div class="form-button text-center">

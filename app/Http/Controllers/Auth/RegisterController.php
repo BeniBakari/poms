@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'users';
+    protected $redirectTo = 'manageUsers';
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('isAdmin');
+        $this->middleware('auth');
     }
 
     /**
@@ -74,7 +74,7 @@ class RegisterController extends Controller
         return User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
-            'roleId' => 1,
+            'roleId' => 4,
             'rankId' => $data['rankId'],
             'status' => "Active",
             'phone' => $data['phone'],
@@ -84,6 +84,23 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $validate = $this ->validator();
+        if(!$validate->errors()->isEmpty())
+        {
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        else if($this->create($data)){
+            return redirect('users');
+        }
+        else {
+            {
+                return "something went wrong!!";
+            }
+        }
     }
     
 }
