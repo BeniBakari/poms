@@ -54,7 +54,8 @@ nav ul{
 .icons{
     background: #002f4b;
     width: 100%;
-    padding-top: 85px;
+    margin-top: 7%;
+    /* padding-top: 85px; */
     display: inline-block;
 }
 

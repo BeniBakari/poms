@@ -46,11 +46,11 @@
                         <td>{{$request -> requestStatus}}</td>
                         <td>{{$request -> approveStatus}}</td>
                         <td>
-                             <button type="button" class="btn btn-info " data-toggle="modal" data-target="#viewRequetModel{{$request -> requestId}}">view</button>                          
+                             <button type="button" class="btn btn-info badge-pill" data-toggle="modal" data-target="#viewRequetModel{{$request -> requestId}}">view</button>                          
                         </td>
                     </tr>
                     <div class="modal fade" id="viewRequetModel{{$request -> requestId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                         <div class="modal-dialog" role="document">
+                         <div class=" modal-fullscreen modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Request View</h5>
@@ -95,7 +95,7 @@
                                             </form>
                                             <form method="post" action="/disapprove?requestId={{$request->requestId}}">
                                                 @csrf
-                                                 <button type="submit" class="btn btn-danger">Disaprovei</button>
+                                                 <button type="submit" class="btn btn-danger">Disaprove</button>
                                          </form>
                                         <?php }}?>
                                 </div>

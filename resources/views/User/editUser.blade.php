@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<span class="p-5"></span>
-    <div class="card card-body mx-auto" style="width: 60%; border-radius:10px;">
+{{-- <span class="p-5"></span> --}}
+
+    <div class="card card-body mx-auto mt-4" style="width: 60%; border-radius:10px;">
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
@@ -75,10 +76,16 @@
 
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
-        </form>
+
+                 <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
+       
+            </form>
         @endforeach
+        
     </div>
+  
+   
+   
 @endsection
 
 
