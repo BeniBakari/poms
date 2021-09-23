@@ -21,13 +21,13 @@
                      @enderror 
                  </div>
             </div><br>
-        <div class="row">
+        <div class="row rows">
             <div class="col">
                 <label for="" class="float-left"  style="margin-right:10%">Where From</label>
                 <select name="source" id="source" class="form-control form-control-sm form-select col-md-6">
                     <option value=" ">Select</option>
                     @foreach($reqInfos as $reqInfo)
-                    <option value="{{$reqInfo -> district_councilId}}">{{$reqInfo -> districtName}}</option>
+                    <option value="{{$reqInfo -> districtName}}">{{$reqInfo -> districtName}}</option>
                     @endforeach
                 </select>
                 @error('source')
@@ -39,7 +39,7 @@
                 <select name="destination" id="" class="form-control form-control-sm form-select col-md-6 ">
                     <option value="  ">Select </option>
                     @foreach($reqInfos as $reqInfo)
-                    <option value="{{$reqInfo -> district_councilId}}">{{$reqInfo -> districtName}}</option>
+                    <option value="{{$reqInfo -> districtName}}">{{$reqInfo -> districtName}}</option>
                     @endforeach
                 </select>
                 @error('destination')

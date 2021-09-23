@@ -122,8 +122,15 @@ class RequestsController extends Controller
     }
 
     public function approve(Request $request)
-    {   
-        $approve = DB::update('update requests set approveStatus=? where requestId=?',["approved",$request->requestId]);
+    {   if(Auth::user()->roleId == 2)
+        {
+                    $approve = DB::update('update requests set approveStatus=? where requestId=?',["approved",$request->requestId]);
+        }
+      
+        else {
+            // return "humu";
+            $approve = DB::update('update requests set requestStatus = ? where requestId = ?',["2", $request -> requestId]);
+        }
         if($approve)
         { 
             return redirect('supervisor');
@@ -174,17 +181,18 @@ class RequestsController extends Controller
     }
     public function myRequest()
     {
-        //$requests = DB::select('select * from requests where userId=?',[Auth::user()->id]);
-        $requests = DB::select('select requestId,requestStatus,approveStatus,userId,startDate,endDate,source,destination,requestType,requestDesc,regionName,districtName,requests.created_at 
-        from requests,regions,district_councils,users where userId=? and requests.source = district_councils.district_councilId and userId = users.id
-        and regions.regionId =  district_councils.regionId'
-        ,[Auth::user()->id]);
+        $requests = DB::select('select requestId, source, roleTitle, requestDesc, destination, userId, requestType,startDate,endDate,requestStatus, approveStatus, users.roleId = roles.roleId from requests,users,roles where userId = ? and userId = users.id and requestStatus = roles.roleId',[Auth::user()->id]);
+        // $requests = DB::select('select requestId,requestStatus,approveStatus,userId,startDate,endDate,source,destination,requestType,requestDesc,regionName,districtName,requests.created_at, roleTitle 
+        // from requests,regions,district_councils,users,roles where userId=?  and userId = users.id and requestStatus = roles.roleId
+        // and regions.regionId =  district_councils.regionId'
+        // ,[Auth::user()->id]);
+        //return $requests;
         return view('User.myrequests', ['requests' => $requests]);
     }
 
     public function supervisorRequest()
     {
-        $requests = DB::select('select *from requests,users,divisions where userId=id and users.divisionId=divisions.divisionId and users.divisionId =? and requests.requestStatus <=?',[Auth::user()->divisionId,Auth::user()->roleId]);
+        $requests = DB::select('select *from requests,users,divisions,roles where userId=id and users.divisionId=divisions.divisionId and users.divisionId =? and requests.requestStatus <=? and requestStatus = roles.roleId',[Auth::user()->divisionId,Auth::user()->roleId]);
         return view('Supervisor.approveRequest', ['requests' => $requests]);
     }
 }

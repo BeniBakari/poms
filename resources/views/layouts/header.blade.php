@@ -1,39 +1,31 @@
-@include('layouts.web_header')
+      <!--Checkbox hack to mimic onclick event-->
+      <input type="checkbox" id="menu">
 
-<div class="d-flex bg-dark p-3 mb-4 px-md-4">
-      
-    <!-- medium screen -->
-    <div class="d-none d-md-flex text-white flex-row flex-grow-1 my-auto align-items-center">
-              <h3 class="mr-3 justify-content-start" >POM-PORALG</h3>
-    </div>
+      <!--Navbar-->
+      <nav>
 
-    <div class="d-md-flex d-sm-none flex-row-reverse flex-grow-1">
-   
-        <nav class="d-sm-none">
-            <a href="#">
-              <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="20" height="20" class=" align-top " alt="">
-              Bootstrap
-            </a>
-          </nav>
+          <label>POM-PORALG</label>
+        
+          
+          <!--Logo img-->
+          <ul id="logo">
+                <a href="/request">
+                    <img src="{{ asset('tamisemi_logo.png') }}" alt="logo" height="50" width="50">
+                </a>  
+          </ul>
 
-    </div>
+      </nav> 
 
-      <!-- small screen -->
-      <div class="d-flex d-md-none text-white  flex-column  my-auto align-items-center">
-      
-        <h3 class="mr-5 justify-content-start" >POM-PORALG</h3>
+      <div class="icons mt-5">
+          <label for="menu" class=" row rows fixed-top mt-5">
+              <span class="mt-5"></span>
+              <i class="fa fa-bars col offset-1 w-100 " id="bars"></i>
+              <a class="col-sm-1 text-white"  onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                  <i class="fa fa-power-off col-sm-1 " id="logout"><span style="font-size:70%">logout</span></i>
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+          </label>  
       </div>
-
-<div class="d-flex d-md-none flex-row-reverse flex-grow-1 ">
-
-    <nav>
-        <a href="#">
-          <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="20" height="20" class="d-inline-block align-top" alt="">
-          Bootstrap
-        </a>
-      </nav>
-
-</div>
-
-
-</div>

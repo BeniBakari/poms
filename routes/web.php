@@ -27,7 +27,7 @@ Route::get('addRegions', function () {
 });
 Route::get('manageUsers', function () {
     return view('Admin.manageUsers');
-})->middleware('auth');
+})->middleware('isAdmin');
 Route::get('changepassword', function () {
     return view('User.changepassword');
 });
@@ -35,14 +35,17 @@ Route::get('addUser','\App\Http\Controllers\UserController@getInfo');
 Route::get('profile','\App\Http\Controllers\UserController@getProfile');
 Route::get('deactivate','\App\Http\Controllers\UserController@deactivate')->middleware('isAdmin');
 Route::get('activate','\App\Http\Controllers\UserController@activate')->middleware('isAdmin');
-Route::get('users','\App\Http\Controllers\UserController@getUsers');
+Route::get('users','\App\Http\Controllers\UserController@getUsers')->middleware('isAdmin');
 Route::get('makeRequest','\App\Http\Controllers\RequestsController@getReqInfo');
 Route::get('regions','\App\Http\Controllers\RegionsController@show');
 Route::get('request','\App\Http\Controllers\RequestsController@myRequest');
-Route::get('supervisor','\App\Http\Controllers\RequestsController@supervisorRequest');
+Route::get('supervisor','\App\Http\Controllers\RequestsController@supervisorRequest')->middleware('isAdmin');
 Route::get('districts','\App\Http\Controllers\District_councilController@show');
 Route::get('roles','\App\Http\Controllers\RolesController@show');
+Route::get('requestPdf','\App\Http\Controllers\PdfGeneratorController@requestPdf');
 
+Route::post('reset','\App\Http\Controllers\ChangePassword@resetPassword')->middleware('isAdmin');
+Route::post('register','\App\Http\Controllers\Auth\RegisterController@store')->middleware('isAdmin');
 Route::post('cancel','\App\Http\Controllers\RequestsController@cancel');
 Route::post('approve','\App\Http\Controllers\RequestsController@approve');
 Route::post('disapprove','\App\Http\Controllers\RequestsController@approve');

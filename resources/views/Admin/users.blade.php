@@ -16,7 +16,7 @@
            
         }  
     </style>   
-    <div class="top-content row" id="content">
+    <!-- <div class="top-content row" id="content">
         <form class="d-flex col-md-4 offset-2">
                 <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="Search ser" aria-label="Search" onkeyup="getUsers(this.value)">
         </form>
@@ -42,7 +42,7 @@
         </div>
 
         
-    </div>
+    </div> -->
     
     <div id="content" class="content">
         <table class="table" >
@@ -87,22 +87,6 @@
                 @endforeach
             </tbody>
         </table>
-        <span id="chini"></span>
+       
     </div>
-    <!-- <script>
-function getUsers(val) {
-    document.getElementById('chini').innerHTML = val
-  var xhttp;    
-  if (val == ""){ val=1;}
-    
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("content").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("POST", "users?value="+val, true);
-  xhttp.send();
-}
-</script> -->
 @endsection

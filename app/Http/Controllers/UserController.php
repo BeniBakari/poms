@@ -48,19 +48,18 @@ class UserController extends Controller
         $divisions  = DB::select('select divisionId,divisionTitle from divisions');
         $ranks = DB::select('select rankId, rankName from ranks');
         $roles = DB::select('select roleId, roleTitle from roles');
+        $profileId = $request -> id;
         if($user != null)
-        return view('User.editUser', ['user' =>$user, 'divisions' => $divisions,'ranks' => $ranks, 'roles' => $roles]);
+        return view('User.editUser', ['user' =>$user, 'divisions' => $divisions,'ranks' => $ranks, 'roles' => $roles, 'profileId' => $profileId]);
         else
             return "requested user not available";
     }
 
     public function getUsers(Request $request)
     {
-        if($request->value == 1)
-        $users = DB::select('select *from users,ranks where users.rankId=ranks.rankId');
-        else {
-            $users = DB::select('select *from users where email LIKE ?',[$request->value]);
-        }
+        
+            $users = DB::select('select *from users,ranks where users.rankId = ranks.rankId');
+        
         $divisions = DB::select('select *from divisions');
         
             return view('Admin.users', ['users' => $users, 'divisions'=> $divisions]);
@@ -75,8 +74,9 @@ class UserController extends Controller
             return redirect('users');
         }
         else {
-            return "users";
+            return redirect('users');
         }
         
     }
+    
 }

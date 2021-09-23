@@ -18,15 +18,15 @@ class CreateRequestsTable extends Migration
             $table->bigInteger('userId')->unsigned();
             $table->string('startDate');
             $table->string('endDate');
-            $table->integer('source')->unsigned();
-            $table->integer('destination')->unsigned();
+            $table->string('source');
+            $table->string('destination');
             $table->string('requestType',60);
             $table->string('requestDesc',200);
             $table->string('requestStatus',20);
             $table->string('approveStatus',20);
             $table->foreign('userId')->references('id')->on('users')->onUpdate('cascade')->ondelete('null');
-            $table->foreign('source')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->ondelete('null');
-            $table->foreign('destination')->references('district_councilId')->on('district_councils')->onUpdate('cascade')->ondelete('null');
+            // $table->foreign('source')->references('districtName')->on('district_councils')->onUpdate('cascade')->ondelete('null');
+            // $table->foreign('destination')->references('districtName')->on('district_councils')->onUpdate('cascade')->ondelete('null');
             $table->timestamps();
         });
     }

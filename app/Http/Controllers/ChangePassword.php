@@ -55,9 +55,29 @@ class ChangePassword extends Controller
             }
         }
         else {
-            return "Old";
                 session()->flash('message','Incorrect current password!');
                 return redirect()->back();  
+        }
+    }
+
+
+    public function resetPassword(Request $request)
+    {
+        $validate = $this->validator($request->all());
+        
+        if(!$validate->errors()->isEmpty())
+        {
+            return redirect()->back()->withErrors($validate->errors());
+        }
+        $newpassword = Hash::make($request->password);
+        if(DB::update('update users set password = ? where email = ?',[$newpassword, $request->email]))
+        {
+            session()->flash('message','password reset successfuly!');
+            return redirect('users');
+        }
+        else {
+             session()->flash('message','failed to reset password!');
+             return redirect()->back();
         }
     }
 }

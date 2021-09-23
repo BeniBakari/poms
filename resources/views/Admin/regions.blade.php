@@ -1,21 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .btn-sm{
-            background-color: #013C5C;
-            color:white;
-        
-        }
-        .content{
-            margin-top: 10px;
-        }
-        tr:nth-child(even) {
-                    background-color: #dddddd;
-                    } 
-        .top-content{
-           
-        }  
-    </style>   
+
 
     <div id="content" class="content col-md-8">
         <button type="button" class="btn btn-info " data-toggle="modal" data-target="#addRegion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -42,7 +27,7 @@
             </tbody>
         </table>
         <div class="modal fade" id="addRegion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add New Region</h5>
@@ -58,7 +43,7 @@
                 	 <input type="text" name="regionName" class="form-control col-md-6 text-center form-inputs"  placeholder="KILIMANJARO" autofocus required>
 					 @error('regionName')
                          <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
-                        @enderror 
+            @enderror 
         		</div>
 				
                 <div class="form-button text-center">

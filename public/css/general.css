@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    @include('layouts.web_header')
-    </head>
-<<<<<<< HEAD
-        <style>
-            *{
+       *{
     padding: 0;
     margin: 0;
     text-decoration: none;
@@ -16,9 +9,10 @@
 
 /*Header Styling*/
 nav{
+    top: 0;
     background: #013c5c;
     line-height: 80px;
-    
+    z-index: 100;
     position: fixed;
     width: 100%;
 }
@@ -41,48 +35,42 @@ nav ul{
 
 /*Icons styling*/
 .icons{
-    background: #002f4b;
+    /* position: fixed; */
     width: 100%;
-    margin-top: 7%;
-    /* padding-top: 85px; */
-    display: inline-block;
+    padding-top: 100px;
+	
 }
 
 /*Text beside icons Styling*/
 .icons label{
-    line-height: 50px;
+    line-height: 30px;
     font-size: 30px;
-    color: white;
     font-weight: 100;
-    margin-left: 50px;
+	
+    /* margin-left: 50px; */
    
 }
 
 /*Individual icon Styling*/
 .icons #bars{
     cursor: pointer;
-    float: left;
-    padding: 10px 0px 0px 10px;
+    opacity: 0;
+    padding: 15px 0px 0px 5px;
+    color: #013c5c;
 }
 
 /*Individual icon Styling*/
 .icons #logout{
     cursor: pointer;
-    float: right;
-    padding: 10px 10px 0px 0px;
+    color: #013c5c;
+    padding: 15px 10px 0px 0px;
 }
 
 /*Respective Page Styling*/
 .page{
-    margin-left: auto;
-}
-
-/*Change Password Page Styling*/
-.page{
-    max-width: 80%;
-    width: 100%;
-      
-    
+    margin-left: 20%;
+    /* position: absolute; */
+    /* margin-top: 200px; */
   }
 
 /*Sidenav Styling*/
@@ -90,8 +78,10 @@ nav ul{
     position: fixed;
     background: #013c5c;
     width: 185px;
-    height: 100.4%;
-    margin-top: 0px;
+    height: 100%;
+    border-top-right-radius: 12px;
+    /* margin-top: 9px; */
+    z-index: 99;
 }
 
 /*Sidenav block styling*/
@@ -103,19 +93,20 @@ nav ul{
 
 /*Sidenav block hover styling*/
 .side-menu a:hover{
+    text-decoration: none;
     background: rgb(20,54,165);
     padding-left: 20px;
 }
 
 /*Sidenav text styling*/
 .side-menu span{
-    
     margin-left: 10px;
     color: white;
 }
 
 /*Sidenav icon styling*/
 .side-menu i{
+    
     font-size: 100%;
     margin-left: 5px;
     color: white;
@@ -159,7 +150,6 @@ nav ul{
 @media (max-width:700px){
 
     .side-menu{
-
         width: 100%;
         text-align: center;
         left:100%;
@@ -167,13 +157,13 @@ nav ul{
         transition: all 0.5s;
     }
 
-    .side-menu a i{
+    .side-menu a i {
 
         display: none;
     }
 
     .side-menu a span{
-
+        line-height: 50px;
         display: block;
     }
 
@@ -182,7 +172,13 @@ nav ul{
         display: block;
     }
 
-
+    .icons #bars{
+        opacity: 1;
+    } 
+    
+    .icons #logout, nav #logo{
+        display: none;
+    }
     nav .menu-bar{
 
         display: block;
@@ -197,12 +193,11 @@ nav ul{
 /*Footer Styling*/
 footer{
     color:white;
-    
-    
     font-weight: 300;
     background-color: #1C1B1B; 
     display: block; 
     bottom: 0; 
+    z-index: 100;
     position: fixed; 
     width: 100%;
 }
@@ -227,82 +222,26 @@ footer{
         border-bottom: 2px solid #013C5C;   
     }
     .bg-color{
-        backgroud-color: #013C5C;
+        background-color: #013C5C;
     }
      .form-control:focus {
                     box-shadow: none;
                 }
-        </style>
-   
-    <body onload="getUsers(1)">
-      
-      <!--Checkbox hack to mimic onclick event-->
-      <input type="checkbox" id="menu">
+        .rows{
+            width: 100%;
+        }
 
-      <!--Navbar-->
-      <nav>
-
-          <label>POM-PORALG</label>
-          
-          <!--Logo img-->
-          <ul>
-              <img src="#">Logo
-          </ul>
-
-      </nav> 
-
-      <!--Icons for sidenav and logout-->
-      <div class="icons">
-        <label for="menu">
-          <!--Icons-->
-          <i class="fa fa-bars" id="bars"></i>
-          <i class="fa fa-power-off" id="logout"><span></span></i>
-        </label>
-      </div>
-      
-      
-      <!--Sidenav-->
-      <div class="side-menu">
-
-        <a href="profile?id={{Auth::user()->id}}"><i class="fa fa-user-circle-o"></i><span>Profile</span></a>
-        <a href="/request"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="/makeRequest"><i class="fa fa-envelope"></i><span>Make Request</span></a>
-        @if(Auth::user()->roleId == 1) 
-        <a href="/manageUsers"><i class="fa fa-drivers-license"></i><span>Manage User</span></a>
-        <a href="/roles"><i class="fa fa-drivers-license"></i><span>Manage Roles</span></a>
-        <a href="/regions"><i class="fa fa-drivers-license"></i><span>Manage Regions</span></a>
-        <a href="/districts"><i class="fa fa-drivers-license"></i><span>Manage Districts</span></a>
-        @endif
-
-        @if(Auth::user()->roleId == 2 || Auth::user() -> roleId == 3)
-                <a href="/supervisor"><i class="fa fa-drivers-license"></i><span>Requests</span></a>
-        @endif
-
-        <a href="/changepassword"><i class="fa fa-edit"></i><span>Change password</span></a>
-
-        <a class="Logo" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                   <span>{{ __('Logout') }}</span>
-        </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-
-      </div>
-
-=======
-    <body >
-@include('layouts.header')    
-@include('layouts.navbar')
->>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
-      <!--Respective pages-->
-      <div class="page">
-            @yield('content')
-        </div>  
-    @include('layouts.footer')
-    </body>
-
-</html>
-
+		  .btn-sm{
+            background-color: #013C5C;
+            color:white;
+        
+        }
+        .content{
+            margin-top: 10px;
+        }
+        tr:nth-child(even) {
+                    background-color: #dddddd;
+                    } 
+        .top-content{
+           
+        }  
