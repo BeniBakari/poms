@@ -1,18 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-{{-- <span class="p-5"></span> --}}
+<span class="p-5"></span>
 
     <div class="card card-body mx-auto mt-4" style="width: 60%; border-radius:10px;">
-=======
 
-<span class="p-5"></span>
-<<<<<<< HEAD
     <div class="card card-body mx-auto" style="border-radius:10px; width: 60%;">
-=======
-    <div class="card card-body mx-auto" style="border-radius:10px;">
->>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
->>>>>>> 1beb709e9e3e6796bb8aae704ee5a7a414a5e51d
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
