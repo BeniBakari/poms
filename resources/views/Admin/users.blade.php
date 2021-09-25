@@ -89,7 +89,6 @@
                     </tr>
                 @endforeach
             </tbody>
-<<<<<<< HEAD
         </table>  
         
         
@@ -102,7 +101,6 @@
     </div> 
     
    
-=======
         </table>
        
     </div>
@@ -125,5 +123,4 @@
         xhttp.send();            
         }
     </script>
->>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
 @endsection
