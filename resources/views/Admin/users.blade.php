@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <style>
         .btn-sm{
@@ -6,9 +7,10 @@
             color:white;
         
         }
-        .content{
+        /* .content{
             margin-top: 10px;
-        }
+            background-color: #db350b;
+        } */
         tr:nth-child(even) {
                     background-color: #dddddd;
                     } 
@@ -44,7 +46,16 @@
         
     </div> -->
     
-    <div id="content" class="content">
+
+
+    <div id="content" class="container mt-5 content">
+        {{-- <div class="form-group">
+        <form class="form-inline " action="" method="GET">
+            <input class="form-control mr-sm-2 w-50 badge-pill" type="search"  name="search-query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0 badge-pill" type="submit" style="background-color:#013C5C; ">Search</button>
+          </form>
+        </div> --}}
+
         <table class="table" >
             <thead>
                 <tr>
@@ -86,7 +97,16 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
-       
-    </div>
+        </table>  
+        
+        
+        <div class="d-flex justify-content-center">          
+            {{ $users->links() }}   
+            <style>
+                .w-5{display: none;}
+                </style>  
+           </div>
+    </div> 
+    
+   
 @endsection
