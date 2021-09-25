@@ -18,6 +18,10 @@ Route::get('/', function () {
     return redirect('request');
 });
 
+Route::get('header', function () {
+    return view('layouts.header');
+});   
+
 Route::get('addRegions', function () {
     return view('Admin.addRegion');
 });

@@ -1,8 +1,18 @@
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
+{{-- <span class="p-5"></span> --}}
+
+    <div class="card card-body mx-auto mt-4" style="width: 60%; border-radius:10px;">
+=======
 
 <span class="p-5"></span>
+<<<<<<< HEAD
     <div class="card card-body mx-auto" style="border-radius:10px; width: 60%;">
+=======
+    <div class="card card-body mx-auto" style="border-radius:10px;">
+>>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
+>>>>>>> 1beb709e9e3e6796bb8aae704ee5a7a414a5e51d
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
@@ -81,6 +91,12 @@
 
                 </div>
               </div>
+<<<<<<< HEAD
+
+                 <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
+       
+            </form>
+=======
               <div class="row rows justify-content-center">
                   <button type="submit" class="btn btn-primary col-md-2  badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button> 
                   @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)      
@@ -89,8 +105,15 @@
               </div>
                  
         </form>
+>>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
         @endforeach
+        
     </div>
+<<<<<<< HEAD
+  
+   
+   
+=======
     <div class="modal fade" id="resetpassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -128,6 +151,7 @@
     </div>
   </div>
 </div>
+>>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
 @endsection
 
 
