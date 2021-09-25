@@ -71,12 +71,8 @@ class UserController extends Controller
     {
         //return $request->value;
         $email = $request->value;
-        $users = DB::select('select *from users,ranks where ranks.rankId = users.rankId and  email LIKE ?',['%'.$email.'%']);
-        if($users == null)
-        {
-            $users = DB::select('select *from users,ranks where ranks.rankId = users.rankId and  lastName LIKE ?',['%'.$request->value.'%']);
-        }
-        
+        $users = DB::select('select *from users,ranks where ranks.rankId = users.rankId and  email LIKE ? or lastName LIKE ? or divisionId = ?',['%'.$email.'%','%'.$request->value.'%',substr($request->value,8)]);
+            
         return view('User.list',['users' => $users,'request' => $request->value]);
     }
 

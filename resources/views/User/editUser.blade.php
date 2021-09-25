@@ -2,7 +2,7 @@
 @section('content')
 <span class="p-5"></span>
 
-    <div class="card card-body mx-auto mt-4" style="width: 60%; border-radius:10px;">
+   
 
     <div class="card card-body mx-auto" style="border-radius:10px; width: 60%;">
             @foreach($user as $user)     
@@ -21,14 +21,14 @@
             <div class="form-group row">
               <label for="inputFirstName" class="col col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input type="text" name="firstName" class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" required @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId) readonly=true @endif>
+                <input type="text" name="firstName" required class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
               </div>
             </div>
             <div class="form-group row">
               <label for="inputLastName" class="col col-form-label mx-3 ">Last Name</label>
               <div class="col-md-8 form-inputs">
 
-                <input type="text" name="lastName" class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}" required @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId) readonly=true @endif>
+                <input type="text" name="lastName" required  class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}"  @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
 
               </div>
             </div>
@@ -36,7 +36,7 @@
                 <label for="inputEmail3" class="col col-form-label mx-3 ">Email</label>
                 <div class="col-md-8 form-inputs">
 
-                  <input type="email" name="email" class="form-control text-center" id="inputEmail3" placeholder="Email" value="{{$user->email}}" @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId) readonly=true @endif>
+                  <input type="email" name="email" required  class="form-control text-center" id="inputEmail3" placeholder="Email" value="{{$user->email}}" @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
                 </div>
               </div>
 

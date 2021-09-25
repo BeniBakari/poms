@@ -24,21 +24,21 @@
             <label for="" class="offset-4">Filter Users</label>
             <div class="row" style="backgroud-color:green">
                 <label for="" class="col ">By Division</label>
-                <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" style="">
-                    <option >All</option>
+                <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" onchange="getUsers(this.value)">
+                    <option value="">All</option>
                     @foreach($divisions as $division)
-                    <option value="{{$division -> divisionId}}">{{$division -> divisionTitle}}</option>
+                    <option value="division{{$division -> divisionId}}">{{$division -> divisionTitle}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="row" style="margin-top: 20px;">
+            <!-- <div class="row" style="margin-top: 20px;">
                 <label for="" class="col">By Rank</label>
                 <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" style="">
                     <option >All</option>
                     <option value="1">Immediate Supervisor</option>
                     <option value="2">DAHRAM</option>
                 </select>
-            </div>
+            </div> -->
         </div>
 
         
