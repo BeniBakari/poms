@@ -18,11 +18,22 @@
     </style>   
     <div id="content" class="content">
         @empty($requests)
-        <div class="card">
+        <div class="card w-75">
             <div class="card-body justify-content-center">
-                <h2>          
-                    WELCOME TO PERMISSION ONLINE MANAGEMENT SYTEM (POMS)
-                </h2>
+                <h3>          
+                    WELCOME TO PERMISSION ONLINE MANAGEMENT SYSTEM (POMS).
+                </h3>
+                <p>
+                    @if(Auth::user()->roleId == 4)
+                        You can send request and download the request report in pdf formart after it has been approved the by the administration.
+                    @endif
+
+                    @if(Auth::user() -> roleId == 3 || Auth::user()->roleId ==2 )
+                        You can approve or disapprove the request of the user.
+                    @else(Auth::user()->roleId == 1)
+                        You can Activate/Deactivate user account and register new User
+                    @endif
+                </p>
               
 
             </div>
@@ -82,7 +93,7 @@
                                     <span>Approval Status <b class="
                                         <?php if($request -> approveStatus == "cancelled" || $request -> approveStatus == "disapproved") {
                                             ?> text-danger<?php
-                                        }else{ ?>
+                                        }elseif($request -> approveStatus == "approved"){ ?>
                                                 text-success
                                             <?php
                                         }?>

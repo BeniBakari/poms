@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use DB;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -31,13 +33,13 @@ class UserController extends Controller
      public function deactivate(Request $request)
     {
         if(DB::update('update users set status= ? where id=?',['Inactive',$request->id]))
-            return redirect('users');
+            return redirect('users')->with('success','User Deactivated');
     }
 
     public function activate(Request $request)
     {
          if(DB::update('update users set status= ? where id=?',['Active',$request->id]))
-           return redirect('users');
+           return redirect('users')->with('success','User Activated');
     }
 
     public function getProfile(Request $request)
@@ -58,24 +60,51 @@ class UserController extends Controller
     public function getUsers(Request $request)
     {
         
-            $users = DB::select('select *from users,ranks where users.rankId = ranks.rankId');
+        $users = DB::select('select *from users,ranks where users.rankId = ranks.rankId');
         
         $divisions = DB::select('select *from divisions');
         
             return view('Admin.users', ['users' => $users, 'divisions'=> $divisions]);
     }
 
+    public function filteredUser(Request $request)
+    {
+        //return $request->value;
+        $email = $request->value;
+        $users = DB::select('select *from users,ranks where ranks.rankId = users.rankId and  email LIKE ?',['%'.$email.'%']);
+        if($users == null)
+        {
+            $users = DB::select('select *from users,ranks where ranks.rankId = users.rankId and  lastName LIKE ?',['%'.$request->value.'%']);
+        }
+        
+        return view('User.list',['users' => $users,'request' => $request->value]);
+    }
+
     public function update(Request $request)
     {
         $data = $request->all();
-        $update = DB::update('update users set firstName=?, lastName=?, roleId=?, rankId=?, divisionId=?,phone=? where email=?', [$data['firstName'],$data['lastName'],$data['roleId'],$data['rankId'],$data['divisionId'],$data['phone'],$data['email']]);
-        if($update)
+        if(Auth::user()->roleId != 1)
         {
-            return redirect('users');
+            $update = DB::update('update users set phone = ? where email = ?',[$data['phone'],$data['email']]);
+            if($update)
+        {
+            return redirect('request');
         }
         else {
-            return redirect('users');
+            return redirect('request');
         }
+        }
+        else {
+            $update = DB::update('update users set firstName=?, lastName=?, roleId=?, rankId=?, divisionId=?,phone=? where email=?', [$data['firstName'],$data['lastName'],$data['roleId'],$data['rankId'],$data['divisionId'],$data['phone'],$data['email']]);   
+            if($update)
+        {
+            return redirect('users')->with('success','Succesfully User Information  Updated');
+        }
+        else {
+            return redirect('users')->with('information','No information Updated');
+        }  
+        }
+        
         
     }
     

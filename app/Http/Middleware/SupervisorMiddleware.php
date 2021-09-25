@@ -17,11 +17,12 @@ class SupervisorMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->roleId == 2)
+        if(Auth::check() && (Auth::user()->roleId == 2 || Auth::user()->roleId == 3))
         {
             return $next($request);
         }
         else {
+            Auth::logout();
             return redirect ('login');
         }
     }

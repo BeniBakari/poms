@@ -16,9 +16,9 @@
            
         }  
     </style>   
-    <!-- <div class="top-content row" id="content">
+    <div class="top-content row rows">
         <form class="d-flex col-md-4 offset-2">
-                <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="Search ser" aria-label="Search" onkeyup="getUsers(this.value)">
+                <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="search by email or last name" aria-label="Search" onkeyup="getUsers(this.value)" autofocus>
         </form>
         <div class="filter col-md-4 offset-2">
             <label for="" class="offset-4">Filter Users</label>
@@ -42,8 +42,9 @@
         </div>
 
         
-    </div> -->
-    
+    </div>
+    <div id="input"></div>
+
     <div id="content" class="content">
         <table class="table" >
             <thead>
@@ -53,7 +54,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Status</th>
-                    <th>Rank</th>
+                    <th>Designation</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -89,4 +90,23 @@
         </table>
        
     </div>
+
+    
+
+    
+
+    <script>
+        function getUsers(str)
+        {  
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText;
+            }
+  };
+        xhttp.open("get", "filtered?value="+str, true);
+        xhttp.send();            
+        }
+    </script>
 @endsection

@@ -2,12 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,13 +16,14 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->roleId == 1)
+        if(Auth::check && Auth::user()->roleId == 4)
         {
             return $next($request);
         }
         else {
             Auth::logout();
-            return redirect ('login');
+            return route('logout');
         }
+        
     }
 }

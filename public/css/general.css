@@ -69,8 +69,6 @@ nav ul{
 /*Respective Page Styling*/
 .page{
     margin-left: 20%;
-    /* position: absolute; */
-    /* margin-top: 200px; */
   }
 
 /*Sidenav Styling*/
@@ -103,6 +101,10 @@ nav ul{
     margin-left: 10px;
     color: white;
 }
+/* .side-menu a:focus{
+    background-color: yellow;
+    outline: 0;
+} */
 
 /*Sidenav icon styling*/
 .side-menu i{
@@ -242,6 +244,4 @@ footer{
         tr:nth-child(even) {
                     background-color: #dddddd;
                     } 
-        .top-content{
-           
-        }  
+        

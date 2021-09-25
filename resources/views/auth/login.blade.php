@@ -62,7 +62,7 @@
         <div class="form-inputs">
             <h3 style="color:#013C5C" class="offset-md-2">POM-PORALG</h3>
             <div class="mb-3">      
-                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="ex@tamisemi.tz" autofocus>
+                 <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="exam.example@tamisemi.go.tz" autofocus>
             </div>
           @csrf
           <div class="mb-3">
@@ -71,7 +71,7 @@
             @error('email')
                 <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
             @enderror
-          <a href="#" style="text-decoration: none; margin-left: 10%; color: #013C5C;float: left;">forgot password?</a>
+          <!-- <a href="#" style="text-decoration: none; margin-left: 10%; color: #013C5C;float: left;">forgot password?</a> -->
           <br>
         </div>
           <div class="form-button text-center">

@@ -78,17 +78,17 @@
                                             <?php
                                         }?>
                                     ">{{$request -> approveStatus}}</b></span>
-
+                                    
 
                                 </div>
                                 <div class="modal-footer">
                                     
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     
-                                        <?php if($request -> approveStatus != "cancelled" && $request -> approveStatus != "approved" && $request -> approveStatus != "disapproved" ) 
-                                        {
-                                            if($request -> requestStatus >= Auth::user()->roleId){
-                                            ?>
+                                        @if($request -> approveStatus != "cancelled" && $request -> approveStatus != "approved" && $request -> approveStatus != "disapproved" ) 
+                                        
+                                            @if($request -> requestStatus >= Auth::user()->roleId)
+                                            
                                             <form method="post" action="/approve?requestId={{$request->requestId}}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success">Approve</button>   
@@ -96,8 +96,9 @@
                                             <form method="post" action="/disapprove?requestId={{$request->requestId}}">
                                                 @csrf
                                                  <button type="submit" class="btn btn-danger">Disaprove</button>
-                                         </form>
-                                        <?php }}?>
+                                            </form>
+                                            @endif
+                                        @endif
                                 </div>
                             </div>
                         </div>
