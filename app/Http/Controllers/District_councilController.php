@@ -85,7 +85,7 @@ class District_councilController extends Controller
     {   
         $regions = DB::select('select *from regions');
         $districts = DB::select('select *from district_councils, regions where regions.regionId = district_councils.regionId');
-        return view('Admin.districts',['districts' => $districts,'regions'=>$regions]);
+        return view('Admin.districts',['districts' => $districts,'regions'=>$regions])->with('success', 'Successfuly');
     }
 
     /**

@@ -87,7 +87,7 @@ class RequestsController extends Controller
             return redirect()->back ()->withErrors($validate->errors());
         }
         else if($this->create($data))
-        return redirect('request');
+        return redirect('request')->with('success','Successfuly requested');
         else 
             return "something went wrong";
     }
@@ -122,13 +122,15 @@ class RequestsController extends Controller
     }
 
     public function approve(Request $request)
-    {   if(Auth::user()->roleId == 2)
+    {  
+        
+        if(Auth::user()->roleId == 2)
         {
                     $approve = DB::update('update requests set approveStatus=? where requestId=?',["approved",$request->requestId]);
         }
       
         else {
-            // return "humu";
+          
             $approve = DB::update('update requests set requestStatus = ? where requestId = ?',["2", $request -> requestId]);
         }
         if($approve)

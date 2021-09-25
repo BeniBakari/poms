@@ -18,16 +18,16 @@
     </style>   
 
 <div id="content" class="content col-md-8">
-        <button type="button" class="btn btn-info " data-toggle="modal" data-target="#addRegion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+        <!-- <button type="button" class="btn btn-info " data-toggle="modal" data-target="#addRegion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
         <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
-        </svg></button>
+        </svg></button> -->
         <table class="table" >
             <thead>
                 <tr>
                     <th>#</th>
                     <th>District Id</th>
-                    <th>Region Name</th>
                     <th>District Name</th>
+                    <th>Region Name</th>
                     
                 </tr>
             </thead>
@@ -37,8 +37,8 @@
                     <tr>
                         <td><?php echo ++$num; ?></td> 
                         <td>{{$district -> district_councilId}}</td>
-                        <td>{{$district -> regionName}} </td>
                         <td>{{$district -> districtName}}</td>
+                        <td>{{$district -> regionName}} </td>
                     </tr>
                 @endforeach
             </tbody>

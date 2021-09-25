@@ -21,7 +21,8 @@ class Admin
             return $next($request);
         }
         else {
-            return route('login');
-        }      
+            return route('logout');
+        }
+        
     }
 }

@@ -18,44 +18,36 @@
            
         }  
     </style>   
-    <!-- <div class="top-content row" id="content">
+    <div class="top-content row rows">
         <form class="d-flex col-md-4 offset-2">
-                <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="Search ser" aria-label="Search" onkeyup="getUsers(this.value)">
+                <input class="form-control form-control-sm me-2 rounded-pill text-center"  type="search" placeholder="search by email or last name" aria-label="Search" onkeyup="getUsers(this.value)" autofocus>
         </form>
         <div class="filter col-md-4 offset-2">
             <label for="" class="offset-4">Filter Users</label>
             <div class="row" style="backgroud-color:green">
                 <label for="" class="col ">By Division</label>
-                <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" style="">
-                    <option >All</option>
+                <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" onchange="getUsers(this.value)">
+                    <option value="">All</option>
                     @foreach($divisions as $division)
-                    <option value="{{$division -> divisionId}}">{{$division -> divisionTitle}}</option>
+                    <option value="division{{$division -> divisionId}}">{{$division -> divisionTitle}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="row" style="margin-top: 20px;">
+            <!-- <div class="row" style="margin-top: 20px;">
                 <label for="" class="col">By Rank</label>
                 <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" style="">
                     <option >All</option>
                     <option value="1">Immediate Supervisor</option>
                     <option value="2">DAHRAM</option>
                 </select>
-            </div>
+            </div> -->
         </div>
 
         
-    </div> -->
-    
+    </div>
+    <div id="input"></div>
 
-
-    <div id="content" class="container mt-5 content">
-        {{-- <div class="form-group">
-        <form class="form-inline " action="" method="GET">
-            <input class="form-control mr-sm-2 w-50 badge-pill" type="search"  name="search-query" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0 badge-pill" type="submit" style="background-color:#013C5C; ">Search</button>
-          </form>
-        </div> --}}
-
+    <div id="content" class="content">
         <table class="table" >
             <thead>
                 <tr>
@@ -64,7 +56,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Status</th>
-                    <th>Rank</th>
+                    <th>Designation</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -97,6 +89,7 @@
                     </tr>
                 @endforeach
             </tbody>
+<<<<<<< HEAD
         </table>  
         
         
@@ -109,4 +102,28 @@
     </div> 
     
    
+=======
+        </table>
+       
+    </div>
+
+    
+
+    
+
+    <script>
+        function getUsers(str)
+        {  
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText;
+            }
+  };
+        xhttp.open("get", "filtered?value="+str, true);
+        xhttp.send();            
+        }
+    </script>
+>>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
 @endsection

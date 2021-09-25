@@ -39,16 +39,17 @@ Route::get('users','\App\Http\Controllers\UserController@getUsers')->middleware(
 Route::get('makeRequest','\App\Http\Controllers\RequestsController@getReqInfo');
 Route::get('regions','\App\Http\Controllers\RegionsController@show');
 Route::get('request','\App\Http\Controllers\RequestsController@myRequest');
-Route::get('supervisor','\App\Http\Controllers\RequestsController@supervisorRequest')->middleware('isAdmin');
+Route::get('supervisor','\App\Http\Controllers\RequestsController@supervisorRequest')->middleware('isSupervisor');
 Route::get('districts','\App\Http\Controllers\District_councilController@show');
 Route::get('roles','\App\Http\Controllers\RolesController@show');
 Route::get('requestPdf','\App\Http\Controllers\PdfGeneratorController@requestPdf');
+Route::get('filtered','\App\Http\Controllers\UserController@filteredUser')->middleware('isAdmin');
 
 Route::post('reset','\App\Http\Controllers\ChangePassword@resetPassword')->middleware('isAdmin');
 Route::post('register','\App\Http\Controllers\Auth\RegisterController@store')->middleware('isAdmin');
 Route::post('cancel','\App\Http\Controllers\RequestsController@cancel');
-Route::post('approve','\App\Http\Controllers\RequestsController@approve');
-Route::post('disapprove','\App\Http\Controllers\RequestsController@approve');
+Route::post('approve','\App\Http\Controllers\RequestsController@approve')->middleware('isSupervisor');
+Route::post('disapprove','\App\Http\Controllers\RequestsController@disapprove')->middleware('isSupervisor');
 Route::post('changepass','\App\Http\Controllers\ChangePassword@change');
 Route::post('edit','\App\Http\Controllers\UserController@update');
 Route::post('makeRequest','\App\Http\Controllers\RequestsController@store');

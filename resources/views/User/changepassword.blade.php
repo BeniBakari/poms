@@ -2,12 +2,7 @@
 @extends('layouts.app')
 @section('content')
 <span class="p-5"></span>
-<div class="card col-md-8 mx-auto p-5" style="
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 3px;
-    border-color: #013C5C;
-    padding: 30px;">
+<div class="card col-md-8 mx-auto p-5" >
     
     <div class="mb3 w-100 text-center ">
         <h3>Change Password</h3>

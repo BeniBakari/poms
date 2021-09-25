@@ -30,6 +30,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = 'manageUsers';
+    
 
     /**
      * Create a new controller instance.
@@ -91,14 +92,14 @@ class RegisterController extends Controller
         $validate = $this ->validator();
         if(!$validate->errors()->isEmpty())
         {
-            return redirect()->back()->withErrors($validate->errors());
+            return redirect()->back()->withErrors($validate->errors())->with('error','Failed to register new user');
         }
         else if($this->create($data)){
-            return redirect('users');
+            return redirect('users')->with('success','New User Successfuly registered');
         }
         else {
             {
-                return "something went wrong!!";
+                return redirect()->back()->with('information','Something went wrong');
             }
         }
     }

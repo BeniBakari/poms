@@ -1,8 +1,16 @@
 @extends('layouts.app')
 @section('content')
+<<<<<<< HEAD
 
 <span class="p-5"></span>
     <div class=" card card-body mx-auto" style="border-radius:10px;">
+=======
+<span class="p-5"></span>
+
+   
+
+    <div class="card card-body mx-auto" style="border-radius:10px; width: 60%;">
+>>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
@@ -19,16 +27,14 @@
             <div class="form-group row">
               <label for="inputFirstName" class="col col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input type="text" name="firstName" class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" required <?php if(Auth::user()->roleId != 1) {?> readonly=true <?php } ?>>
-
-
+                <input type="text" name="firstName" required class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
               </div>
             </div>
             <div class="form-group row">
               <label for="inputLastName" class="col col-form-label mx-3 ">Last Name</label>
               <div class="col-md-8 form-inputs">
 
-                <input type="text" name="lastName" class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}" required <?php if(Auth::user()->roleId != 1) {?> readonly=true <?php } ?>>
+                <input type="text" name="lastName" required  class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}"  @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
 
               </div>
             </div>
@@ -36,14 +42,14 @@
                 <label for="inputEmail3" class="col col-form-label mx-3 ">Email</label>
                 <div class="col-md-8 form-inputs">
 
-                  <input type="email" name="email" class="form-control text-center" id="inputEmail3" placeholder="Email" value="{{$user->email}}" readonly=true>
+                  <input type="email" name="email" required  class="form-control text-center" id="inputEmail3" placeholder="Email" value="{{$user->email}}" @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="inputDivision" class="col col-form-label mx-3 ">Role</label>
                 <div class="col-sm-8 form-inputs">
-                  <select name="roleId"   class="form-control form-select text-center" @if(Auth::user()->roleId != 1)?> disabled @endif >
+                  <select name="roleId"   class="form-control form-select text-center" @if(Auth::user()->roleId != 1) disabled @endif >
                   <option value="{{$user -> roleId}}" selected>{{$user->roleTitle}}</option>
                                     @foreach($roles as $role)
                                         <option value = "{{$role -> roleId}}"> {{$role -> roleTitle}}</option>
@@ -53,7 +59,7 @@
               </div>
 
               <div class="form-group row">
-                <label for="inputDivision" class="col col-form-label mx-3 ">Rank</label>
+                <label for="inputDivision" class="col col-form-label mx-3 ">Designation</label>
                 <div class="col-sm-8 form-inputs">
                   <select name="rankId" class="form-control form-select text-center" @if(Auth::user()->roleId != 1)  disabled @endif >
                   <option value="{{$user -> rankId}}" selected>{{$user->rankName}}</option>
@@ -83,6 +89,7 @@
 
                 </div>
               </div>
+<<<<<<< HEAD
               <div class="row rows justify-content-center">
                   <button type="submit" class="btn btn-primary col-md-2  badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button> 
                   @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)      
@@ -131,6 +138,18 @@
     </div>
   </div>
 </div>
+=======
+
+                 <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
+       
+            </form>
+        @endforeach
+        
+    </div>
+  
+   
+   
+>>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
 @endsection
 
 
