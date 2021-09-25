@@ -92,12 +92,12 @@
         </table>  
         
         
-        <div class="d-flex justify-content-center">          
+        {{-- <div class="d-flex justify-content-center">          
             {{ $users->links() }}   
             <style>
                 .w-5{display: none;}
                 </style>  
-           </div>
+           </div> --}}
     </div> 
     
    
