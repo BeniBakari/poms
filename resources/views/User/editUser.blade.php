@@ -83,67 +83,16 @@
 
                 </div>
               </div>
-<<<<<<< HEAD
 
                  <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
        
             </form>
-=======
-              <div class="row rows justify-content-center">
-                  <button type="submit" class="btn btn-primary col-md-2  badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button> 
-                  @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)      
-                      <button type="button" class="btn btn-info col-md-4 offset-2 rounded-pill" style="margin-top: 30px;" data-toggle="modal" data-target="#resetpassword">Reset Password</button> 
-                  @endif
-              </div>
-                 
-        </form>
->>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
         @endforeach
         
     </div>
-<<<<<<< HEAD
   
    
    
-=======
-    <div class="modal fade" id="resetpassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form method="POST" action="/reset?email={{$user->email}}" class="form-inputs">
-        @csrf
-				<div class="mb-3 col  row"> 
-					<label for="" class="float-left col-md-3" style="margin-right:10%"> Password</label>    
-                	 <input type="text" name="password" class="form-control col-md-6 text-center form-inputs" autocomplete="off" autofocus required>
-					 @error('password')
-                         <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
-            @enderror 
-        		</div>
-
-            <div class="mb-3 col  row"> 
-					<label for="" class="float-left col-md-3" style="margin-right:10%"> Confirm</label>    
-                	 <input type="text" name="password_confirmation" class="form-control col-md-6 text-center form-inputs" autocomplete="off" autofocus required>
-					 @error('password-confirm')
-                         <strong><span style="color: red; font-size: 80%;">{{$message}}</span></strong><br>
-            @enderror 
-        		</div>
-				
-                <div class="form-button text-center">
-                    <button type="submit" class="btn btn-primary col-md-4" style="background-color:#013c5c; border-radius:20px;" >Reset</button>
-          		</div>
-    
-        </form><button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
->>>>>>> ea50deae2c0e2db32f2abeea9769f2be2a604993
 @endsection
 
 
