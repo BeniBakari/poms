@@ -7,4 +7,4 @@ command number two
   2. composer require barryvdh/laravel-dompdf
   
   
-  Now you are ready to launcy your project
+  Now you are ready to launch your application
