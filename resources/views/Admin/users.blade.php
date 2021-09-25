@@ -43,13 +43,12 @@
             </div> -->
         </div>
 
-        
     </div>
-    <div id="input"></div>
+    {{-- <div id="input"></div> --}}
 
-    <div id="content" class="content">
+    <div class="container mt-5"">
         <table class="table" >
-            <thead>
+            <thead class="text-white" style="background-color: #013C5C; ">
                 <tr>
                     <th>#</th>
                     <th>User Id</th>
@@ -73,12 +72,12 @@
                         <td>{{$user -> rankName}}</td>
                         <td>
                             <a href="profile?id={{$user -> id}}">
-                                <button class="btn-sm rounded">edit</button>
+                                <button class="btn-sm badge-pill">edit</button>
                             </a>    
                         </td>
                         <td>
                             <a href="<?php if($user->status == "Inactive") echo "activate"; else echo "deactivate" ?>?id={{$user -> id}}">
-                                <button class="btn-sm rounded">
+                                <button class="btn-sm  badge-pill">
                                     <?php 
                                         if($user->status == "Inactive") echo "Activate";
                                         else echo "Deactivate";
@@ -88,22 +87,16 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
+                
+            </tbody>         
         </table>  
-        
-        
-        {{-- <div class="d-flex justify-content-center">          
-            {{ $users->links() }}   
-            <style>
-                .w-5{display: none;}
-                </style>  
-           </div> --}}
+            
+           {{-- <div class="d-flex  justify-content-center float-left mr-2" style="background-color: red;">
+            {!! $users->links() !!}
+        </div> --}}
     </div> 
-    
-   
-        </table>
        
-    </div>
+    {{ $users->links() }}
 
     
 
@@ -123,4 +116,5 @@
         xhttp.send();            
         }
     </script>
+    {{-- {!! $users->render() !!}  --}}
 @endsection
