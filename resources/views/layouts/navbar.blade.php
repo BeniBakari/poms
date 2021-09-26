@@ -24,7 +24,7 @@
         <a href="/changepassword"><i class="fa fa-edit"></i><span>Change password</span></a>
         <a class="Logout" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();"><i class="fa fa-power-off " id="logout"></i>
+                             document.getElementById('logout-form').submit();"><i class="fa fa-sign-out-alt " id="logout"></i>
                    <span>{{ __('Logout') }}</span>
         </a>
 

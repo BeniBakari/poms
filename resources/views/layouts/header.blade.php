@@ -22,7 +22,7 @@
               <i class="fa fa-bars col offset-1 w-100 " id="bars"></i>
               <a class="col-sm-1 text-white"  onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
-                  <i class="fa fa-power-off col-sm-1 " id="logout"><span style="font-size:70%">logout</span></i>
+                  <i class="fa fa-sign-out-alt col-sm-1 " id="logout" style="font-size: 20px; color:black;"><span class="px-1" style="font-size: 15px;">logout</span></i>
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf

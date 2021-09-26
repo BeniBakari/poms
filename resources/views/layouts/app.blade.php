@@ -12,7 +12,7 @@
     </script>
     </head>
 
-    <body onload = "dismiss();">
+    <body onload = "dismiss();" style="font-family: 'Raleway', sans-serif;">
 @include('layouts.header')    
 @include('layouts.navbar')
 @include('flash_message')
