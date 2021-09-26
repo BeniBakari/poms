@@ -8,7 +8,7 @@
 }
 
 /*Header Styling*/
-nav{
+.navi{
     top: 0;
     background: #013c5c;
     line-height: 80px;
@@ -28,7 +28,7 @@ nav label{
 }
 
 /*Header logo Styling*/
-nav ul{
+nav .logo{
     float: right;
     margin-right: 20px;
 }

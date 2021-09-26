@@ -63,19 +63,16 @@ class UserController extends Controller
         $users=DB::table('users')
         ->join('ranks', 'users.rankId', '=', 'ranks.rankId')->paginate(1);
 
-
-        // $users = DB::select('select *from users,ranks where users.rankId = ranks.rankId');
-        
         $divisions = DB::select('select *from divisions');
 
         return view('Admin.users',  [
-                'users'=> $users
-            // 'users' => DB::table('users')
-            //                ->join('ranks', 'users.rankId', '=', 'ranks.rankId')->paginate(1)
-            ,'divisions'=> $divisions 
-                           
+                'users'=> $users       
+            ,'divisions'=> $divisions                         
         ]);
-        
+
+         // $users = DB::select('select *from users,ranks where users.rankId = ranks.rankId');
+              // 'users' => DB::table('users')
+            //                ->join('ranks', 'users.rankId', '=', 'ranks.rankId')->paginate(1)
             // return view('Admin.users', ['users' => $users, 'divisions'=> $divisions]);
     }
 

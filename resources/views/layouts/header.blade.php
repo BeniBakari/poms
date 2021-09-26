@@ -2,13 +2,13 @@
       <input type="checkbox" id="menu">
 
       <!--Navbar-->
-      <nav>
+      <nav class="navi">
 
           <label>POM-PORALG</label>
         
           
           <!--Logo img-->
-          <ul id="logo">
+          <ul class="logo" id="logo">
                 <a href="/request">
                     <img src="{{ asset('tamisemi_logo.png') }}" alt="logo" height="50" width="50">
                 </a>  

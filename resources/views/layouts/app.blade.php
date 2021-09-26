@@ -11,18 +11,12 @@
         }
     </script>
     </head>
-<<<<<<< HEAD
-    <body >
-@include('layouts.header')    
-@include('layouts.navbar')
-=======
 
     <body onload = "dismiss();">
 @include('layouts.header')    
 @include('layouts.navbar')
 @include('flash_message')
 
->>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
       <!--Respective pages-->
       <div class="text-center offset-2 ">
             @yield('content')
