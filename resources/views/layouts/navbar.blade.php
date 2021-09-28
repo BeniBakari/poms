@@ -11,10 +11,20 @@
             <a href="/makeRequest"><i class="fa fa-envelope"></i><span>Make Request</span></a>
         @endif
         @if(Auth::user()->roleId == 1) 
-        <a href="/manageUsers"><i class="fa fa-users" aria-hidden="true"></i><span>Manage User</span></a>
-        <a href="/roles"><i class="fa fa-drivers-license"></i><span>Manage Roles</span></a>
+        <a href="/manageUsers"><i class="fa fa-users" aria-hidden="true"></i><span>Manage User</span>
+      
+    </a>
+    <div class="dropdown ">
+    <a class="dropdown-toggle  text-white" data-bs-toggle="dropdown"><i class="fa fa-cog"></i><span style="margin-left:10px;">Administration</span> </a>
+    <div class="dropdown-menu">
+        <a href="/roles" class="dropdown-item">Roles</a>
+        <a href="/regions" class="dropdown-item">Regions</a>
+        <a href="/districts" class="dropdown-item">Districts</a>
+    </div>
+</div>
+        <!-- <a href="/roles"><i class="fa fa-drivers-license"></i><span>Manage Roles</span></a>
         <a href="/regions"><i class="fa fa-drivers-license"></i><span>Manage Regions</span></a>
-        <a href="/districts"><i class="fa fa-drivers-license"></i><span>Manage Districts</span></a>
+        <a href="/districts"><i class="fa fa-drivers-license"></i><span>Manage Districts</span></a> -->
         @endif
 
         @if(Auth::user()->roleId == 2 || Auth::user() -> roleId == 3)

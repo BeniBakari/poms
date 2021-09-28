@@ -17,6 +17,14 @@ class RanksTableSeeder extends Seeder
     {
         DB::table('ranks')->insert([
             [
+               'rankName' => "Director",
+                'rankDesc' => ""  
+            ],
+            [
+                'rankName' => "Supervisor",
+                'rankDesc' => "" 
+            ],
+            [
                 'rankName' => "ICT Operating Officer",
                 'rankDesc' => "" 
             ]

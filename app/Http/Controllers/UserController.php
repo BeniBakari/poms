@@ -48,9 +48,10 @@ class UserController extends Controller
         $user = DB::select('select id,users.rankId,rankName,firstName,lastName,email,gender,phone,status,password,district_councilId,users.divisionId,divisions.divisionTitle, users.roleId,roles.roleTitle
         from users,divisions,ranks,roles  where 
         users.roleId=roles.roleId and users.rankId = ranks.rankId and users.divisionId=divisions.divisionId and id=?', [$request->id]);
-        $divisions  = DB::select('select divisionId,divisionTitle from divisions');
-        $ranks = DB::select('select rankId, rankName from ranks');
-        $roles = DB::select('select roleId, roleTitle from roles');
+        $divisions  = DB::select('select divisionId,divisionTitle from divisions where divisionId!=?',[$user[0]->divisionId]);
+        
+        $ranks = DB::select('select rankId, rankName from ranks where rankId!=? ',[$user[0]->rankId]);
+        $roles = DB::select('select roleId, roleTitle from roles where roleId!=?',[$user[0]->roleId]);
         $profileId = $request -> id;
         if($user != null)
         return view('User.editUser', ['user' =>$user, 'divisions' => $divisions,'ranks' => $ranks, 'roles' => $roles, 'profileId' => $profileId]);
@@ -61,7 +62,7 @@ class UserController extends Controller
     public function getUsers(Request $request)
     {
         $users=DB::table('users')
-        ->join('ranks', 'users.rankId', '=', 'ranks.rankId')->paginate(1);
+        ->join('ranks', 'users.rankId', '=', 'ranks.rankId')->paginate(5);
 
         $divisions = DB::select('select *from divisions');
 
@@ -80,9 +81,18 @@ class UserController extends Controller
     {
         //return $request->value;
         $email = $request->value;
-        $users = DB::select('select *from users,ranks where ranks.rankId = users.rankId and  email LIKE ? or lastName LIKE ? or divisionId = ?',['%'.$email.'%','%'.$request->value.'%',substr($request->value,8)]);
-            
-        return view('User.list',['users' => $users,'request' => $request->value]);
+        // $users = DB::select('select *from users,ranks where
+        //  ranks.rankId = users.rankId and  email LIKE ? or lastName LIKE ? or divisionId = ?',
+        //  ['%'.$email.'%','%'.$request->value.'%',substr($request->value,8)])->paginate(2);
+        $users=DB::table('users')
+        ->where('email','LIKE','%'.$request->value.'%')
+        ->orwhere('lastName','LIKE','%'.$request->value.'%')
+        ->orwhere('divisionId','=',substr($request->value,8))
+        ->join('ranks', 'users.rankId', '=', 'ranks.rankId')->paginate(2);
+        return view('User.list',[
+            'users' => $users,
+            'request' => $request->value
+        ]);
     }
 
     public function update(Request $request)

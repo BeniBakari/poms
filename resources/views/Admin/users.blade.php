@@ -19,7 +19,7 @@
            
         }  
     </style>   
-    <div class="top-content row rows">
+    <!-- <div class="top-content row rows">
         <form class="d-flex col-md-4 offset-2 pt-5">
                 <input class="form-control form-control  rounded-pill text-center"  type="search" placeholder="search by email or last name" aria-label="Search" onkeyup="getUsers(this.value)" autofocus>
         </form>
@@ -34,24 +34,23 @@
                     @endforeach
                 </select>
             </div>
-            <!-- <div class="row" style="margin-top: 20px;">
+            <div class="row" style="margin-top: 20px;">
                 <label for="" class="col">By Rank</label>
                 <select name="divisionId" id="" class="form-control form-control-sm col-md-7 form-select" style="">
                     <option >All</option>
                     <option value="1">Immediate Supervisor</option>
                     <option value="2">DAHRAM</option>
                 </select>
-            </div> -->
+            </div>
         </div>
 
         
-    </div>
-    <div id="input"></div>
+    </div> -->
 
-    <div id="content" class="container mt-4"">
+    <div id="content" class="container mt-4">
            
-        <table class="table" >
-            <thead class="text-white" style="background-color:#013C5C; ">
+        <table class="table table-responsive " >
+            <thead class="text-white table-header" >
                 <tr>
                     <th>#</th>
                     <th>User Id</th>
@@ -99,11 +98,8 @@
         
     </div> 
        
-
     
-
     
-
     <script>
         function getUsers(str)
         {  

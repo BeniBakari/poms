@@ -87,7 +87,8 @@ class RegionsController extends Controller
     public function show()
     {
         //$regions = DB::table('regions')->pluck('regionId','regionName')->get('all');
-        $regions =DB::select('select regionId,regionName from regions');
+       // $regions =DB::select('select regionId,regionName from regions');
+        $regions = DB::table('regions')->paginate(8);
         return view('Admin.regions',['regions'=>$regions]);
     }
 

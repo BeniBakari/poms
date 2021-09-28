@@ -1,16 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
 
 <span class="p-5"></span>
-    <div class=" card card-body mx-auto" style="border-radius:10px;">
-=======
-<span class="p-5"></span>
-
-   
-
-    <div class="card card-body mx-auto" style="border-radius:10px; width: 60%;">
->>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
+    <div class=" card card-body mx-auto" style="border-radius:10px; width:60%">
             @foreach($user as $user)     
         <form method="post" action="/edit">
         @csrf
@@ -27,14 +19,14 @@
             <div class="form-group row">
               <label for="inputFirstName" class="col col-form-label mx-3 ">First Name</label>
               <div class="col-md-8 form-inputs">
-                <input type="text" name="firstName" required class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
+                <input type="text" name="firstName" required class="form-control text-center" id="inputFirstName" placeholder="First Name" value="{{$user->firstName}}" @if(Auth::user()->roleId != 1) readonly=true @endif>
               </div>
             </div>
             <div class="form-group row">
               <label for="inputLastName" class="col col-form-label mx-3 ">Last Name</label>
               <div class="col-md-8 form-inputs">
 
-                <input type="text" name="lastName" required  class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}"  @if(Auth::user()->roleId != 1 || Auth::user()->id != $profileId) readonly=true @endif>
+                <input type="text" name="lastName" required  class="form-control text-center" id="inputLastName" placeholder="Last Name" value="{{$user->lastName}}"  @if(Auth::user()->roleId != 1) readonly=true @endif>
 
               </div>
             </div>
@@ -89,7 +81,6 @@
 
                 </div>
               </div>
-<<<<<<< HEAD
               <div class="row rows justify-content-center">
                   <button type="submit" class="btn btn-primary col-md-2  badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button> 
                   @if(Auth::user()->roleId == 1 && Auth::user()->id != $profileId)      
@@ -138,18 +129,6 @@
     </div>
   </div>
 </div>
-=======
-
-                 <button type="submit" class="btn btn-primary offset-5 badge-pill" style="margin-top: 30px; background-color:#013c5c; width:80px;" >Save</button>       
-       
-            </form>
-        @endforeach
-        
-    </div>
-  
-   
-   
->>>>>>> 1074db265c733dcab929c4d547fa2a7cf482a89d
 @endsection
 
 

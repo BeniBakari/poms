@@ -21,7 +21,7 @@ class DivisionsTableSeeder extends Seeder
                 'divisionDesc' => "Division of Information and Technology"
             ],
             [
-                'divisionTitle' => "DUPT",
+                'divisionTitle' => "PMU",
                 'divisionDesc' => " "
             ]
         ]);

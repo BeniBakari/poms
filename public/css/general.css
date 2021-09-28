@@ -75,7 +75,7 @@ nav .logo{
 .side-menu{
     position: fixed;
     background: #013c5c;
-    width: 185px;
+    width: 190px;
     height: 100%;
     border-top-right-radius: 12px;
     /* margin-top: 9px; */
@@ -244,4 +244,8 @@ footer{
         tr:nth-child(even) {
                     background-color: #dddddd;
                     } 
+
+.table-header{
+    background-color:#013C5C;
+}
         
